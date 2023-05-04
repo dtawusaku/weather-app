@@ -8,7 +8,6 @@ app.set('view engine', 'ejs'); // set the view engine to ejs
 
 
 app.get("/", function(req,res){
-    // res.sendFile(__dirname + "//index.html");
     res.render('index');
 });
 app.post("/", function (req, res){
