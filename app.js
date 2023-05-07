@@ -1,10 +1,23 @@
-const express = require("express");
-const https =  require("https");
-const bodyParser = require("body-parser"); 
-const app = express();
+import express from "express";
+import https from "https";
+import bodyParser from "body-parser";
+import cors from "cors";
+import morgan from "morgan";
+import path from "path";
+import { fileURLToPath } from "url";
 
+// Config
+const app = express();
+app.use(bodyParser.json({extended:true}));
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine', 'ejs'); // set the view engine to ejs
+dotenv.config();
+app.use(cors());
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use("/assets",express.static(path.join(__dirname,'public/assets')));
 
 
 app.get("/", function(req,res){
@@ -27,7 +40,7 @@ app.post("/", function (req, res){
                 var location = weatherData.name;
                 var imageURL = "http://openweathermap.org/img/wn/"+ icon +"@2x.png";
                 
-                // console.log(weatherData);
+                console.log(weatherData);
                 // res.sendFile(__dirname + "//index.html");
                 res.render('succes',{
                     description: description,  // property: data aka variable name kini
