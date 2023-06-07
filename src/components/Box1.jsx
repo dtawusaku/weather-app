@@ -2,8 +2,8 @@ import React from "react";
 
 // import motion from "framer-motion";
 import Lottie from "lottie-react";
-import Cloud from "/public/assets/lotties/extreme-night-drizzle.json";
-import Party from "/public/assets/lotties/party-popper.json.json";
+import Cloud from "/src/assets/lotties/extreme-night-drizzle.json";
+import Party from "/src/assets/lotties/party-popper.json.json";
 
 export default function Box1() {
   return (
