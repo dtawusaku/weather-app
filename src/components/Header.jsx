@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <>
       <div className="h-40 pt-32">
-        <h1 className="text-center text-white text-4xl uppercase">
+        <h1 className="text-center text-black text-4xl uppercase font-poppins">
           <Typewriter
             options={{
               strings: "Weather Application",

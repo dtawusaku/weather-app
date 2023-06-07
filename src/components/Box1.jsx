@@ -10,7 +10,7 @@ export default function Box1() {
     <>
       <div className="r h-40 bg-pink-300">
         {" "}
-        Hello World
+        <span className="f font-poppins text-s4"> Hello World</span> <br></br>
         <br></br>
         <div style={{ width: "5%" }}>
           <Lottie
