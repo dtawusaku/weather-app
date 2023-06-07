@@ -21,7 +21,7 @@ export default function SearchBar() {
         </div>
         <input
           type="search"
-          className="block w-full rounded-full p-4 pl-10 text-sm text-[#060606] border border-main h-4 bg-gray-50 dark:bg-white-dark focus:ring-main focus:border-main"
+          className="block w-full rounded-full p-4 pl-10 text-sm text-[#060606] border border-main h-4 bg-gray-50 dark:text-main  dark:bg-white-dark focus:ring-main focus:border-main"
           placeholder="search for places.."></input>
       </div>
     </>

@@ -4,6 +4,7 @@ import Box1 from "./components/Box1";
 import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
 import WeatherBox from "./components/WeatherBox";
+import TypeBox from "./components/TypeBox";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme")); // Theme is stored in local storage.
@@ -35,22 +36,37 @@ function App() {
 
   return (
     <>
-      <div className="flex dark:text-white">
+      <div className="flex dark:text-white bg-main dark:bg-main-dark duration-700 ease-in-out">
         <SideBar />
 
         {/* Main */}
-        <div className="h-screen w-screen max-w-screen-xl  px-[4rem]">
+        <div className="h-auto w-full max-w-screen-xl mx-[4rem]">
           <NavBar />
 
-          <div>
+          <div className="my-[4.125rem] flex gap-4 hover:overflow-auto w-full overflow-hidden">
+            <WeatherBox />
+            <WeatherBox />
+            <WeatherBox />
             <WeatherBox />
           </div>
-          <div className="  bg-red-700 w-44 h-44">
-            <button
-              className="b button p-2 bg-red-400 mt-2 rounded-lg"
-              onClick={handleThemeSwitch}>
-              Theme{" "}
-            </button>
+          <div className="mb-[2.4375rem]">
+            <div className="flex">
+              {" "}
+              Today's Highlights{" "}
+              <button
+                className="b button p-2 bg-gray-50 mt-2 rounded-lg"
+                onClick={handleThemeSwitch}>
+                Theme{" "}
+              </button>
+            </div>
+          </div>
+          <div className=" grid grid-cols-3 gap-6">
+            <TypeBox />
+            <TypeBox />
+            <TypeBox />
+            <TypeBox />
+            <TypeBox />
+            <TypeBox />
           </div>
         </div>
       </div>
