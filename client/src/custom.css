@@ -1,0 +1,18 @@
+.weather-box {
+  height: 9.8125rem;
+  width: 7.625rem; /* 122px */
+  position: sticky;
+  border-radius: 0.37rem;
+  background-color: white;
+}
+
+.weather-box1 {
+  position: absolute;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 5;
+
+  top: 50%;
+  bottom: 50%;
+}
