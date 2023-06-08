@@ -1,8 +1,7 @@
 # Weather App
 
-This NodeJS application allows users to retrieve weather information for a specific city using the OpenWeather API. The application prompts the user to enter a city name, and then displays the current weather conditions for that city, including the temperature, humidity, wind speed, and a brief description of the weather.
-
--- Currently, it displays only the description of the weather.
+This is a simple weather application built with Node.js and React that retrieves weather data using the OpenWeatherMap API.
+It leverages the OpenWeatherMap API to retrieve current weather data for different locations.
 
 ## Screens
 
@@ -13,6 +12,13 @@ This NodeJS application allows users to retrieve weather information for a speci
 
 <b>Result Page</b>
 <img src="/assets/images/getv1.png">
+
+<bHow it works</b>
+<video autoplay loop muted>
+
+  <source src="/assets/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ### Version 2
 
