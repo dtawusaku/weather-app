@@ -13,12 +13,10 @@ It leverages the OpenWeatherMap API to retrieve current weather data for differe
 <b>Result Page</b>
 <img src="/assets/images/getv1.png">
 
-<bHow it works</b>
-<video autoplay loop muted>
+<!-- <bHow it works</b>
+[![Weather Application Preview](https://example.com/path/to/placeholder-image.png)](https://example.com/path/to/your/video.mp4) -->
 
-  <source src="/assets/video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<iframe width="560" height="315" src="https://github.com/dtawusaku/weather-app/blob/testing/assets/video.mp4" frameborder="0" allowfullscreen></iframe>
 
 ### Version 2
 
