@@ -24,7 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet" />
 
-    <title>Weather App</title>
+    <title>Weathernow</title>
   </head>
   <body
     class="font-poppins scrollbar-thin scrollbar-thumb-rounded-sm scrollbar-thumb-my-black scrollbar-track-black">
@@ -32,67 +32,5 @@
     <script
       type="module"
       src="/src/main.jsx"></script>
-    <script>
-      //Caesear Cipher
-
-      function rot(str, shiftKey) {
-        let r = str.toLowerCase().split("");
-        const alphabets = [
-          "a",
-          "b",
-          "c",
-          "d",
-          "e",
-          "f",
-          "g",
-          "h",
-          "i",
-          "j",
-          "k",
-          "l",
-          "m",
-          "n",
-          "o",
-          "p",
-          "q",
-          "r",
-          "s",
-          "t",
-          "u",
-          "v",
-          "w",
-          "x",
-          "y",
-          "z",
-        ];
-        const key = shiftKey;
-        let regEx = /\W/; //Punctuations and whitespaces
-        let cipherText = [];
-        console.log(r);
-
-        //console.log(me)
-        for (let i = 0; i < r.length; i++) {
-          // Do for only alphanumeric characters
-          if (!regEx.test(r[i])) {
-            let initialIndex = alphabets.indexOf(r[i], 0);
-            let cipherIndex = initialIndex + key;
-            let cipherIndex2 = 0;
-            if (!cipherIndex > 26) {
-              cipherIndex2 = cipherIndex;
-            } else {
-              cipherIndex2 = cipherIndex - 26;
-            }
-            let cipherLetter = alphabets.at(cipherIndex2);
-            cipherText.push(cipherLetter);
-          } else {
-            cipherText.push(r[i]);
-          }
-        }
-
-        console.log(cipherText.join("").toUpperCase());
-      }
-
-      rot("WOMEN ARE COMPLICATED!", 4);
-    </script>
   </body>
 </html>

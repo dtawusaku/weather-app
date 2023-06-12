@@ -6,17 +6,19 @@ import WeatherBox from "./components/WeatherBox";
 import TypeBox from "./components/TypeBox";
 
 function App() {
-  const [search, setsearch] = useState(null);
-  const [backendData, setBackendData] = useState([{}]);
+  const [location, setLocation] = useState("");
+  const [weatherData, setWeatherData] = useState([{}]);
+
   const [theme, setTheme] = useState(localStorage.getItem("theme")); // Theme is stored in local storage.
   const [count, setCount] = useState(0);
   const themeQuery = window.matchMedia("(prefer-color-scheme:dark)");
 
   useEffect(() => {
-    fetch("/apit")
+    fetch("http://localhost:3000/weather")
       .then((response) => response.json())
       .then((data) => {
-        setBackendData(data);
+        // console.log(data);
+        setWeatherData(data);
       });
   }, []);
 

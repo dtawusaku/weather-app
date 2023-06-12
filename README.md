@@ -1,5 +1,8 @@
 # Weather App
 
+<img src="/assets/weatherlogo.png" width="400px">
+
+<hr>
 This is a simple weather application built with Node.js and React that retrieves weather data using the OpenWeatherMap API.
 It leverages the OpenWeatherMap API to retrieve current weather data for different locations.
 
