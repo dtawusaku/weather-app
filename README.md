@@ -33,8 +33,9 @@ It leverages the OpenWeatherMap API to retrieve current weather data for differe
     <li>This application was built using the OpenWeather API.</li>
 </ul>
 
-Package X was gotten from ----
-Package Y was gotten from ---
+Package X was gotten from ---- https://googlefonts.github.io/noto-emoji-animation/
+Package Y was gotten from --- https://github.com/basmilius/weather-icons
+Official site - https://meteocons.com/
 
 ## License
 

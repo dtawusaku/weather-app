@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import Cloud from "../assets/lotties/extreme-night-drizzle.json";
+import Cloud from "../assets/lotties/weather-icons/extreme-day-snow.json";
 import tCloud from "../assets/animated/rainy-7.svg";
 import Lottie from "lottie-react";
 

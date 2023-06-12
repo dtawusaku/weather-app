@@ -4,6 +4,7 @@ import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
 import WeatherBox from "./components/WeatherBox";
 import TypeBox from "./components/TypeBox";
+import emojis from "./scripts/emojis";
 
 function App() {
   const [location, setLocation] = useState("");
@@ -44,6 +45,8 @@ function App() {
     setTheme(theme == "dark" ? "light" : "dark");
   };
   // console.log(window);
+
+  // console.log(emojis.eyes);
 
   return (
     <>
