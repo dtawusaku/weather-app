@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./components/NavBar";
-import WeatherBox from "./components/WeatherBox";
-import thinkingface from "./assets/lotties/emojis/thinking-face.json";
 import Lottie from "lottie-react";
 import weather from "./scripts/clouds";
 import Typewriter from "typewriter-effect";
-import SearchBar from "./components/SearchBar";
 import "./custom.css";
+import Tab from "./components/Tab";
+import Today from "./components/Today";
+import Week from "./components/Week";
 
 function App() {
   const [location, setLocation] = useState("");
@@ -17,13 +16,12 @@ function App() {
   const themeQuery = window.matchMedia("(prefer-color-scheme:dark)");
 
   useEffect(() => {
-    fetch("http://localhost:3000/weather")
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data);
-        setWeatherData(data);
-      });
-  }, []);
+    fetch(`http://localhost:3000/weather`)
+      .then((response) => {
+        response.json();
+      })
+      .then((data) => console.log(data));
+  });
 
   useEffect(() => {
     switch (theme) {
@@ -46,7 +44,17 @@ function App() {
   const handleThemeSwitch = () => {
     setTheme(theme == "dark" ? "light" : "dark");
   };
+  const handleSetLocation = (event) => {
+    setLocation(event.target.value);
+  };
+  // IF YOU CAN DO WITHOUT POST
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setLocation(event.target[0].value);
+  };
+
   // console.log(window);
+  console.log(weatherData);
   /*
   const successCallback = (position) => {
     console.log(position);
@@ -57,7 +65,7 @@ function App() {
   };
 
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback); */
-  console.log(weatherData);
+
   // console.log(emojis.eyes);
 
   return (
@@ -66,42 +74,64 @@ function App() {
         {/* SideBar */}
         <div className="w-sidebar h-auto bg-white dark:bg-white-dark px-6 pt-[4rem] duration-700 ease-in-out">
           {/* SEARCH BAR */}
-          <div className="relative">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg
-                aria-hidden="true"
-                class="w-4 h-4 text-[#060606] dark:text-gray-400 -translate-y-3"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
-            </div>
-            <input
-              type="search"
-              className="block w-full rounded-full p-4 pl-10 pr-24 text-sm text-[#060606] border border-main h-4 bg-gray-50 dark:text-main  dark:bg-white-dark focus:ring-main focus:border-main"
-              placeholder="search for places.."
-              onKeyUp={(event) => {
-                if (event.code == "Enter") {
-                  console.log(event.target.value);
-                }
-              }}></input>
-            {location}
+          <form onSubmit={handleSubmit}>
+            <div className="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg
+                  aria-hidden="true"
+                  class="w-4 h-4 text-[#060606] dark:text-gray-400 -translate-y-3"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+              <input
+                type="search"
+                className="block w-full rounded-full p-4 pl-10 pr-24 text-sm text-[#060606] border border-main h-4 bg-gray-50 dark:text-main  dark:bg-white-dark focus:ring-main focus:border-main"
+                placeholder="search for places.."
+                name="location"
+                onKeyDown={(event) => {
+                  if (event.code == "Enter") {
+                    handleSetLocation(event);
+                  }
+                }}></input>
+              {location}
 
-            <div className="flex justify-end pr-4">
-              <div className=" w-6 h-6 rounded-full mr-2 font-bold text-xs text-center bg-[#F7F6F9] text-black dark:text-white dark:bg-[#16131B] cursor-pointer">
-                <h1 className=" translate-y-1">NG</h1>
-              </div>
-              <div className=" w-6 h-6 rounded-full font-bold text-xs text-center dark:bg-[#818181] bg-[#9D9D9D] text-[#F1F1F1] cursor-pointer">
-                <h1 className=" translate-y-1">EV</h1>
+              <div className="flex justify-end pr-4">
+                <button
+                  type="submit"
+                  class="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
+
+                <div className=" w-6 h-6 rounded-full mr-2 font-bold text-xs text-center bg-[#F7F6F9] text-black dark:text-white dark:bg-[#16131B] cursor-pointer">
+                  <h1 className="">NG</h1>
+                </div>
+                <div className=" w-6 h-6 rounded-full font-bold text-xs text-center dark:bg-[#818181] bg-[#9D9D9D] text-[#F1F1F1] cursor-pointer">
+                  <h1 className="">EV</h1>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
+
           {/* SEARCH BAR END */}
           <div>
             <div>
@@ -119,17 +149,18 @@ function App() {
             </p>
           </div>
           <div className=" w-full h-[0.05rem] bg-[#F2F2F2] mt-4"></div>
-          <div>
-            <div>Mostly CLoudy</div>
+          <div className="mt-7 mb-4 font-medium text-s1">
+            <div className="mb-3">Mostly Cloudy</div>
             <div>Rain 30%</div>
           </div>
-          <div className="pb-6 mt-[13rem]">
+          <div className="pb-6">
             {/* Image Div */}
             <div className="h-[7.6875rem] w-[19rem]">
               <img
                 src="https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGlzb21ldHJpYyUyMGFic3RyYWN0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
                 className="w-full h-full object-cover  rounded-lg opacity-75"></img>
               <h1 className=" font-semibold text-lg text-white text-center -translate-y-[4.3rem]">
+                {/* Might use set timeout fucntion for this typewriter thing */}
                 <Typewriter
                   options={{
                     strings: "New York, NY, USA",
@@ -145,108 +176,18 @@ function App() {
         {/* SideBar End */}
 
         {/* Main */}
-        <div className="h-auto w-full max-w-screen-xl mx-[4rem]">
-          <NavBar />
-
-          <div className="my-[4.125rem] flex gap-4 hover:overflow-auto w-full overflow-hidden">
-            <WeatherBox />
-            <WeatherBox />
-            <WeatherBox />
-            <WeatherBox />
-          </div>
-          <div className="mb-[2.4375rem]">
-            <div className="flex">
-              {" "}
-              <h1 className=" font-semibold text-s4">
-                Today's Highlights
-              </h1>{" "}
-              <button
-                className="b button p-2 bg-gray-50 mt-2 rounded-lg"
-                onClick={handleThemeSwitch}>
-                Theme{" "}
-              </button>
-            </div>
-          </div>
-          <div className=" grid grid-cols-3 gap-6">
-            {/* Condition Box */}
-            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
-              <div className="">
-                <div className="flex justify-between">
-                  <h1 className="p text-2xl font-semibold">Wind Status</h1>
-                  <h3>Tooltip</h3>
-                </div>
-              </div>
-              <div>Image</div>
-              <div>West North</div>
-            </div>
-            {/* Condition Box end */}
-            {/* Condition Box */}
-            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
-              <div className="">
-                <div className="flex justify-between">
-                  <h1 className="p text-2xl font-light text-s3">Wind Status</h1>
-                </div>
-              </div>
-              <div>70KM</div>
-              <div>West North</div>
-            </div>
-            {/* Condition Box end */}
-            {/* Condition Box */}
-            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
-              <div className="">
-                <div className="flex justify-between">
-                  <h1 className="font-semibold">Wind Status</h1>
-                  <div id="tooltip">
-                    <span id="tooltipText">Hi there</span>
-                    <Lottie
-                      animationData={thinkingface}
-                      style={{ width: "2rem" }}
-                      loop={false}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>Image</div>
-              <div>West North</div>
-            </div>
-            {/* Condition Box end */}
-            {/* Condition Box */}
-            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
-              <div className="">
-                <div className="flex justify-between">
-                  <h1 className="p text-2xl font-semibold">Wind Status</h1>
-                  <h3>Tooltip</h3>
-                </div>
-              </div>
-              <div>Image</div>
-              <div>West North</div>
-            </div>
-            {/* Condition Box end */}
-            {/* Condition Box */}
-            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
-              <div className="">
-                <div className="flex justify-between">
-                  <h1 className="p text-2xl font-semibold">Wind Status</h1>
-                  <h3>Tooltip</h3>
-                </div>
-              </div>
-              <div>Image</div>
-              <div>West North</div>
-            </div>
-            {/* Condition Box end */}
-            {/* Condition Box */}
-            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
-              <div className="">
-                <div className="flex justify-between">
-                  <h1 className="p text-2xl font-semibold">Wind Status</h1>
-                  <h3>Tooltip</h3>
-                </div>
-              </div>
-              <div>Image</div>
-              <div>West North</div>
-            </div>
-            {/* Condition Box end */}
-          </div>
+        <div className="h-auto w-full mx-[4rem]">
+          {/* <button
+            className="b button p-2 bg-gray-50 mt-2 rounded-lg"
+            onClick={handleThemeSwitch}>
+            Theme{" "}
+          </button> */}
+          <Tab
+            data={[
+              { name: "Today", component: <Today /> },
+              { name: "Week", component: <Week /> },
+            ]}
+          />
         </div>
       </div>
     </>

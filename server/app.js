@@ -10,16 +10,21 @@ app.use(cors());
 
 app.get("/weather", function (req, res) {
   let location = req.query.location;
-  console.log(location);
-  res.json({
-    user: [
-      { name: "David", age: "11" },
-      { name: "Tony", age: "15" },
-    ],
-  });
-});
-app.post("/", (req, res) => {
-  res.json({});
+  axios
+    .get(
+      `https://api.openweathermap.org/data/2.5/weather?q=Tokyo&APPID=${process.env.APP_ID}`
+    )
+    .then((response) => {
+      // Handle the response data here
+      const data = response.data;
+      res.json(data);
+    })
+    .catch((error) => {
+      // Handle any errors that occur during the request
+      console.error(error);
+    });
+
+  // console.log(process.env.APP_ID);
 });
 
 app.listen(3000, function () {

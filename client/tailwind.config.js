@@ -22,6 +22,7 @@ export default {
         main: "#f7f6f9",
         "main-dark": "#16131B",
         "white-dark": "#2A2C38",
+        ayellow: "#FFDF4A",
         "yellow-dark": "#DDB91A",
         "blue-dark": "#2A337A",
       },
