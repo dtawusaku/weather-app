@@ -16,12 +16,10 @@ function App() {
   const themeQuery = window.matchMedia("(prefer-color-scheme:dark)");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/weather`)
-      .then((response) => {
-        response.json();
-      })
-      .then((data) => console.log(data));
-  });
+    fetch("http://localhost:3000")
+      .then((response) => response.json())
+      .then((data) => setWeatherData(data));
+  }, []);
 
   useEffect(() => {
     switch (theme) {

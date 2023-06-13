@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import cors from "cors";
 import axios from "axios";
 import dotenv from "dotenv";
@@ -8,20 +8,38 @@ const app = express();
 dotenv.config(); //dot env things
 app.use(cors());
 
-app.get("/weather", function (req, res) {
+app.get("/", function (req, res) {
+  let geolocationData = null;
+  let weatherData = null;
   let location = req.query.location;
+  // First use the Geo-location API
   axios
     .get(
-      `https://api.openweathermap.org/data/2.5/weather?q=Tokyo&APPID=${process.env.APP_ID}`
+      ` https://api.openweathermap.org/geo/1.0/direct?q=Owerri,NG&limit=${process.env.LIMIT}&appid=${process.env.APP_ID}`
     )
     .then((response) => {
       // Handle the response data here
-      const data = response.data;
-      res.json(data);
+      geolocationData = response.data[0]; //it is an object
+
+      //Get the latitude and longitude
+      let latitude = geolocationData.lat.toString(); // convert to string
+      let longitude = geolocationData.lon.toString();
+
+      // For Open Weather
+      return axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.APP_ID}`
+      );
+    })
+    .then((response) => {
+      weatherData = response.data;
+      // console.log(latitude,longitude);
+      // res.json(geolocationData);
+      // console.log(weatherData,geolocationData);
+      res.json(weatherData);
     })
     .catch((error) => {
       // Handle any errors that occur during the request
-      console.error(error);
+      console.error("Error occured from geo location");
     });
 
   // console.log(process.env.APP_ID);
