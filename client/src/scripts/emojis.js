@@ -7,6 +7,7 @@ import faceincloud from "../assets/lotties/emojis/face-in--clouds.json";
 import distraught from "../assets/lotties/emojis/distraught.json";
 import eyes from "../assets/lotties/emojis/eyes.json";
 import slightlyfrowning from "../assets/lotties/emojis/slightly-frowning.json";
+import thinkingface from "../assets/lotties/emojis/thinking-face.json";
 
 const emojis = {
   grimacing: grimacing,
@@ -18,6 +19,7 @@ const emojis = {
   "face-in-clouds": faceincloud,
   distraught: distraught,
   "slightly-frowning": slightlyfrowning,
+  thinkingface: thinkingface,
 };
 
 export default emojis;

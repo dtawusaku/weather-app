@@ -9,6 +9,8 @@ dotenv.config(); //dot env things
 app.use(cors());
 
 app.get("/weather", function (req, res) {
+  let location = req.query.location;
+  console.log(location);
   res.json({
     user: [
       { name: "David", age: "11" },

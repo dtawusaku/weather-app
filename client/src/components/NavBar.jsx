@@ -8,14 +8,18 @@ export default function NavBar() {
         <span>Week</span>
       </div>
       <div className="flex">
-        <div className="w w-10 h-10 rounded-full bg-red-400 flex items-center justify-center">
+        <div className=" w-8 h-8 rounded-full bg-red-400 flex items-center justify-center">
           <div className="text-center">
-            <h1>Celsuis</h1>
+            <h1>
+              &deg;<sup>C</sup>
+            </h1>
           </div>
         </div>
-        <div className="w w-10 h-10 rounded-full bg-red-400 flex items-center justify-center">
+        <div className=" w-8 h-8 rounded-full bg-red-400 flex items-center justify-center">
           <div className="text-center">
-            <h1>Fahrenehiet</h1>
+            <h1>
+              &deg;<sup>F</sup>
+            </h1>
           </div>
         </div>
       </div>

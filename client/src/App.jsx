@@ -3,12 +3,13 @@ import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
 import WeatherBox from "./components/WeatherBox";
-import TypeBox from "./components/TypeBox";
-import emojis from "./scripts/emojis";
+import thinkingface from "./assets/lotties/emojis/thinking-face.json";
+import Lottie from "lottie-react";
+import "./custom.css";
 
 function App() {
   const [location, setLocation] = useState("");
-  const [weatherData, setWeatherData] = useState([{}]);
+  const [weatherData, setWeatherData] = useState(null);
 
   const [theme, setTheme] = useState(localStorage.getItem("theme")); // Theme is stored in local storage.
   const [count, setCount] = useState(0);
@@ -45,7 +46,16 @@ function App() {
     setTheme(theme == "dark" ? "light" : "dark");
   };
   // console.log(window);
+  const successCallback = (position) => {
+    console.log(position);
+  };
 
+  const errorCallback = (error) => {
+    console.log(error);
+  };
+
+  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  console.log(weatherData);
   // console.log(emojis.eyes);
 
   return (
@@ -66,7 +76,9 @@ function App() {
           <div className="mb-[2.4375rem]">
             <div className="flex">
               {" "}
-              Today's Highlights{" "}
+              <h1 className=" font-semibold text-s4">
+                Today's Highlights
+              </h1>{" "}
               <button
                 className="b button p-2 bg-gray-50 mt-2 rounded-lg"
                 onClick={handleThemeSwitch}>
@@ -75,12 +87,84 @@ function App() {
             </div>
           </div>
           <div className=" grid grid-cols-3 gap-6">
-            <TypeBox />
-            <TypeBox />
-            <TypeBox />
-            <TypeBox />
-            <TypeBox />
-            <TypeBox />
+            {/* Condition Box */}
+            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
+              <div className="">
+                <div className="flex justify-between">
+                  <h1 className="p text-2xl font-semibold">Wind Status</h1>
+                  <h3>Tooltip</h3>
+                </div>
+              </div>
+              <div>Image</div>
+              <div>West North</div>
+            </div>
+            {/* Condition Box end */}
+            {/* Condition Box */}
+            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
+              <div className="">
+                <div className="flex justify-between">
+                  <h1 className="p text-2xl font-light text-s3">Wind Status</h1>
+                </div>
+              </div>
+              <div>70KM</div>
+              <div>West North</div>
+            </div>
+            {/* Condition Box end */}
+            {/* Condition Box */}
+            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
+              <div className="">
+                <div className="flex justify-between">
+                  <h1 className="font-semibold">Wind Status</h1>
+                  <div id="tooltip">
+                    <span id="tooltipText">Hi there</span>
+                    <Lottie
+                      animationData={thinkingface}
+                      style={{ width: "2rem" }}
+                      loop={false}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div>Image</div>
+              <div>West North</div>
+            </div>
+            {/* Condition Box end */}
+            {/* Condition Box */}
+            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
+              <div className="">
+                <div className="flex justify-between">
+                  <h1 className="p text-2xl font-semibold">Wind Status</h1>
+                  <h3>Tooltip</h3>
+                </div>
+              </div>
+              <div>Image</div>
+              <div>West North</div>
+            </div>
+            {/* Condition Box end */}
+            {/* Condition Box */}
+            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
+              <div className="">
+                <div className="flex justify-between">
+                  <h1 className="p text-2xl font-semibold">Wind Status</h1>
+                  <h3>Tooltip</h3>
+                </div>
+              </div>
+              <div>Image</div>
+              <div>West North</div>
+            </div>
+            {/* Condition Box end */}
+            {/* Condition Box */}
+            <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
+              <div className="">
+                <div className="flex justify-between">
+                  <h1 className="p text-2xl font-semibold">Wind Status</h1>
+                  <h3>Tooltip</h3>
+                </div>
+              </div>
+              <div>Image</div>
+              <div>West North</div>
+            </div>
+            {/* Condition Box end */}
           </div>
         </div>
       </div>

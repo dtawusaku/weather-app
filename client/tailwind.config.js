@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        "plus-jakartar": ["Plus Jakarta Sans", "san-serif"],
       },
       fontSize: {
         s1: "1.000rem",
@@ -15,6 +16,7 @@ export default {
         s5: "1.938rem",
         s6: "2.438rem",
         s7: "3.062rem",
+        s12: "6.56rem",
       },
       colors: {
         main: "#f7f6f9",
@@ -25,6 +27,9 @@ export default {
       },
       width: {
         sidebar: "27.9375rem",
+      },
+      borderRadius: {
+        xc: "0.8rem",
       },
     },
   },

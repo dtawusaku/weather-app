@@ -21,41 +21,16 @@ export default function SearchBar() {
         </div>
         <input
           type="search"
-          className="block w-full rounded-full p-4 pl-10 text-sm text-[#060606] border border-main h-4 bg-gray-50 dark:text-main  dark:bg-white-dark focus:ring-main focus:border-main"
+          className="block w-full rounded-full p-4 pl-10 pr-24 text-sm text-[#060606] border border-main h-4 bg-gray-50 dark:text-main  dark:bg-white-dark focus:ring-main focus:border-main"
           placeholder="search for places.."></input>
-      </div>
-      <div className="flex">
-        <div>
-          <input
-            type="radio"
-            id="hosting-small"
-            name="hosting"
-            value="hosting-small"
-            class=" peer"
-            required></input>
-          <label
-            for="hosting-small"
-            class="peer-checked:bg-pink-400 items-center justify-center w-10 h-10 rounded-full p-5 text-gray-500 bg-white border border-gray-200 inline-block cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <div class="">
-              <div class="w-full font-semibold">NG</div>
-            </div>
-          </label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            id="hosting-big"
-            name="hosting"
-            value="hosting-big"
-            class=" peer"
-            checked></input>
-          <label
-            for="hosting-big"
-            class="peer-checked:bg-pink-400 items-center justify-center w-10 h-10 rounded-full p-5 text-gray-500 bg-white border border-gray-200 inline-block cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <div class="">
-              <div class="w-full text-lg font-semibold">OT</div>
-            </div>
-          </label>
+
+        <div className="flex justify-end pr-4">
+          <div className=" w-6 h-6 rounded-full mr-2 font-bold text-xs text-center bg-[#F7F6F9] text-black dark:text-white dark:bg-[#16131B] cursor-pointer">
+            <h1 className=" translate-y-1">EV</h1>
+          </div>
+          <div className=" w-6 h-6 rounded-full font-bold text-xs text-center dark:bg-[#818181] bg-[#9D9D9D] text-[#F1F1F1] cursor-pointer">
+            <h1 className=" translate-y-1">EV</h1>
+          </div>
         </div>
       </div>
     </>
