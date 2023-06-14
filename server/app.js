@@ -15,7 +15,7 @@ app.get("/", function (req, res) {
   // First use the Geo-location API
   axios
     .get(
-      ` https://api.openweathermap.org/geo/1.0/direct?q=Owerri,NG&limit=${process.env.LIMIT}&appid=${process.env.APP_ID}`
+      ` https://api.openweathermap.org/geo/1.0/direct?q=Accra&limit=${process.env.LIMIT}&appid=${process.env.APP_ID}`
     )
     .then((response) => {
       // Handle the response data here
@@ -35,11 +35,14 @@ app.get("/", function (req, res) {
       // console.log(latitude,longitude);
       // res.json(geolocationData);
       // console.log(weatherData,geolocationData);
-      res.json(weatherData);
+      res.json({ weather: weatherData, location: geolocationData }); // response working!!!
     })
     .catch((error) => {
       // Handle any errors that occur during the request
-      console.error("Error occured from geo location");
+      console.error({
+        error: error,
+        message: "Error occured from geo location",
+      });
     });
 
   // console.log(process.env.APP_ID);

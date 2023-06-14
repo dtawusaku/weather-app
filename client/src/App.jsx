@@ -6,10 +6,12 @@ import "./custom.css";
 import Tab from "./components/Tab";
 import Today from "./components/Today";
 import Week from "./components/Week";
+import { format } from "date-fns"; //For Date formatting
 
 function App() {
   const [location, setLocation] = useState("");
-  const [weatherData, setWeatherData] = useState(null);
+  const [locationData, setlocationData] = useState(null);
+  const [weatherData, setweatherData] = useState(null);
 
   const [theme, setTheme] = useState(localStorage.getItem("theme")); // Theme is stored in local storage.
   const [count, setCount] = useState(0);
@@ -18,7 +20,10 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:3000")
       .then((response) => response.json())
-      .then((data) => setWeatherData(data));
+      .then((data) => {
+        setlocationData(data.location);
+        setweatherData(data.weather);
+      });
   }, []);
 
   useEffect(() => {
@@ -52,7 +57,44 @@ function App() {
   };
 
   // console.log(window);
+  // console.log(locationData);
   console.log(weatherData);
+
+  const dateTimeString = "2023-06-14 21:00:00";
+  const dateTime = new Date(dateTimeString);
+
+  const formattedDate = format(dateTime, "EEEE");
+  const formattedTime = format(dateTime, "HH:mm");
+
+  /*
+  const formattedDate = format(dateTime, "MMMM dd, yyyy"); //June 14, 2023
+  const formattedTime = format(dateTime, "HH:mm:ss"); //00:00:00
+  */
+
+  /* 
+  WEATHER DATA GROUPING KINI
+
+  fullcityname = weatherData.city.name + ", " + weatherData.city.country
+
+  today = weatherData.list.slice(0,7);
+  week =  today = weatherData.list.slice(8,39);
+  
+  ------------------------------------
+const date = new Date(); // Assuming you have a Date object
+
+const options = {
+  weekday: 'short' // Specify 'short' for abbreviated day of the week
+};
+
+const formattedDay = date.toLocaleString('en-US', options);
+
+console.log(formattedDay); // Output: Mon (if today is Monday)
+---------------------------------------
+
+
+
+  */
+
   /*
   const successCallback = (position) => {
     console.log(position);
@@ -68,8 +110,27 @@ function App() {
 
   return (
     <>
-      <div className="flex dark:text-white bg-main dark:bg-main-dark duration-700 ease-in-out">
+      <div className="flex flex-col dark:text-white bg-main dark:bg-main-dark duration-700 ease-in-out lg:flex-row">
         {/* SideBar */}
+        {/* Theme switch */}
+        <div
+          className="absolute bg-gray-400 mt-2 rounded-full py-1.5 px-1.5 left-[18rem] text-white dark:text-black dark:bg-slate-200"
+          onClick={handleThemeSwitch}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+            />
+          </svg>
+        </div>
+        {/* Theme switch end */}
         <div className="w-sidebar h-auto bg-white dark:bg-white-dark px-6 pt-[4rem] duration-700 ease-in-out">
           {/* SEARCH BAR */}
           <form onSubmit={handleSubmit}>
@@ -143,7 +204,10 @@ function App() {
               12&deg;<sup className="text-[4.0rem] font-medium">C</sup>
             </h1>
             <p className=" text-s4 ml-2 font-plus-jakartar font-medium">
-              Monday, <span className=" text-gray-400">16:00</span>
+              {formattedDate ? formattedDate : "Monday"},
+              <span className=" text-gray-400">
+                {formattedTime ? formattedTime : "16:00"}
+              </span>
             </p>
           </div>
           <div className=" w-full h-[0.05rem] bg-[#F2F2F2] mt-4"></div>
@@ -161,7 +225,18 @@ function App() {
                 {/* Might use set timeout fucntion for this typewriter thing */}
                 <Typewriter
                   options={{
-                    strings: "New York, NY, USA",
+                    strings: `${
+                      location
+                        ? location.state
+                          ? locationData.name +
+                            ", " +
+                            location.state +
+                            ", " +
+                            locationData.country
+                          : "Hi there"
+                        : "Hi there"
+                    }`,
+
                     autoStart: true,
                     loop: false,
                     //   delay: 1175,
@@ -175,11 +250,6 @@ function App() {
 
         {/* Main */}
         <div className="h-auto w-full mx-[4rem]">
-          {/* <button
-            className="b button p-2 bg-gray-50 mt-2 rounded-lg"
-            onClick={handleThemeSwitch}>
-            Theme{" "}
-          </button> */}
           <Tab
             data={[
               { name: "Today", component: <Today /> },
