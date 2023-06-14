@@ -27,7 +27,7 @@ app.get("/", function (req, res) {
 
       // For Open Weather
       return axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.APP_ID}`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.APP_ID}`
       );
     })
     .then((response) => {

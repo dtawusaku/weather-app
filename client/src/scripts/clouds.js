@@ -25,6 +25,32 @@ import partlycloudydaysleet from "../assets/lotties/weather-icons/partly-cloudy-
 import partlycloudydaysmoke from "../assets/lotties/weather-icons/partly-cloudy-day-smoke.json";
 import partlycloudydaysnow from "../assets/lotties/weather-icons/partly-cloudy-day-snow.json";
 import partlycloudyday from "../assets/lotties/weather-icons/partly-cloudy-day.json";
+import thunderstormdayextremerain from "../assets/lotties/weather-icons/thunderstorms-day-extreme-rain.json";
+import thunderstormdayextremesnow from "../assets/lotties/weather-icons/thunderstorms-day-extreme-snow.json";
+import thunderstormdayextreme from "../assets/lotties/weather-icons/thunderstorms-day-extreme.json";
+import thunderstormdayovercastrain from "../assets/lotties/weather-icons/thunderstorms-day-overcast-rain.json";
+import thunderstormdayovercastsnow from "../assets/lotties/weather-icons/thunderstorms-day-overcast-snow.json";
+import thunderstormdayovercast from "../assets/lotties/weather-icons/thunderstorms-day-overcast.json";
+import thunderstormdayrain from "../assets/lotties/weather-icons/thunderstorms-day-rain.json";
+import thunderstormdaysnow from "../assets/lotties/weather-icons/thunderstorms-day-snow.json";
+import thunderstormday from "../assets/lotties/weather-icons/thunderstorms-day.json";
+import thunderstormextremerain from "../assets/lotties/weather-icons/thunderstorms-extreme-rain.json";
+import thunderstormextremesnow from "../assets/lotties/weather-icons/thunderstorms-extreme-snow.json";
+import thunderstormextreme from "../assets/lotties/weather-icons/thunderstorms-extreme.json";
+import thunderstormnightextremerain from "../assets/lotties/weather-icons/thunderstorms-night-extreme-rain.json";
+import thunderstormnightextremesnow from "../assets/lotties/weather-icons/thunderstorms-night-extreme-snow.json";
+import thunderstormnightextreme from "../assets/lotties/weather-icons/thunderstorms-night-extreme.json";
+import thunderstormnightovercastrain from "../assets/lotties/weather-icons/thunderstorms-night-overcast-rain.json";
+import thunderstormnightovercastsnow from "../assets/lotties/weather-icons/thunderstorms-night-overcast-snow.json";
+import thunderstormnightovercast from "../assets/lotties/weather-icons/thunderstorms-night-overcast.json";
+import thunderstormnightrain from "../assets/lotties/weather-icons/thunderstorms-night-rain.json";
+import thunderstormnightsnow from "../assets/lotties/weather-icons/thunderstorms-night-snow.json";
+import thunderstormovercastrain from "../assets/lotties/weather-icons/thunderstorms-overcast-rain.json";
+import thunderstormovercastsnow from "../assets/lotties/weather-icons/thunderstorms-overcast-snow.json";
+import thunderstormovercast from "../assets/lotties/weather-icons/thunderstorms-overcast.json";
+import thuderstormsrain from "../assets/lotties/weather-icons/thunderstorms-rain.json";
+import thuderstormssnow from "../assets/lotties/weather-icons/thunderstorms-snow.json";
+
 import extremedrizzle from "../assets/lotties/weather-icons/extreme-drizzle.json";
 import extremefog from "../assets/lotties/weather-icons/extreme-fog.json";
 import extremehail from "../assets/lotties/weather-icons/extreme-hail.json";
@@ -60,6 +86,19 @@ import partlycloudynightsleet from "../assets/lotties/weather-icons/partly-cloud
 import partlycloudynightsmoke from "../assets/lotties/weather-icons/partly-cloudy-night-smoke.json";
 import partlycloudynightsnow from "../assets/lotties/weather-icons/partly-cloudy-night-snow.json";
 import partlycloudynight from "../assets/lotties/weather-icons/partly-cloudy-night.json";
+import clearday from "../assets/lotties/weather-icons/clear-day.json";
+import clearnght from "../assets/lotties/weather-icons/clear-night.json";
+import drizzle from "../assets/lotties/weather-icons/drizzle.json";
+import cloudy from "../assets/lotties/weather-icons/cloudy.json";
+import dust from "../assets/lotties/weather-icons/dust.json";
+import dustday from "../assets/lotties/weather-icons/dust-day.json";
+import dustnight from "../assets/lotties/weather-icons/dust-night.json";
+import fog from "../assets/lotties/weather-icons/fog.json";
+import fogday from "../assets/lotties/weather-icons/fog-day.json";
+import fognight from "../assets/lotties/weather-icons/fog-night.json";
+import hail from "../assets/lotties/weather-icons/hail.json";
+import mist from "../assets/lotties/weather-icons/mist.json";
+import rain from "../assets/lotties/weather-icons/rain.json";
 
 const day = {
   overcast: overcastday,

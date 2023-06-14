@@ -58,7 +58,21 @@ function App() {
 
   // console.log(window);
   // console.log(locationData);
-  console.log(weatherData);
+  console.log(weatherData.list[0].main.temp);
+
+  /* For Weather Box Component
+  
+    box = { 
+      today : {
+        "day" : weatherData.list[0].dt_txt,
+        "description": "weatherData.list[0].weather[0].description",
+        "temp": weatherData.list[0].main.temp, 
+      },
+      week : {
+
+      }
+    }
+  */
 
   const dateTimeString = "2023-06-14 21:00:00";
   const dateTime = new Date(dateTimeString);
