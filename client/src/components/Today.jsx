@@ -2,20 +2,21 @@ import React from "react";
 import WeatherBox from "../components/WeatherBox";
 import thinkingface from "../assets/lotties/emojis/thinking-face.json";
 import Lottie from "lottie-react";
+import functions from "../scripts/functions.js";
 
-export default function Today() {
+export default function Today({ data }) {
+  // console.log(data);
   return (
     <div>
       <div className="my-[4.125rem] flex gap-4 hover:overflow-auto w-full overflow-hidden">
-        <WeatherBox />
-        <WeatherBox />
-        <WeatherBox />
-        <WeatherBox />
+        {data.map((data) => (
+          <WeatherBox data={functions.todayDataLogicHandling(data)} />
+        ))}
       </div>
       <div className="mb-[2.4375rem]">
         <div className="flex">
           {" "}
-          <h1 className=" font-semibold text-s4">Today's Highlights</h1>{" "}
+          <h1 className=" font-semibold text-s4">Current Highlights</h1>{" "}
         </div>
       </div>
       <div className=" grid grid-cols-3 gap-6">

@@ -59,7 +59,7 @@ function App() {
 
   // console.log(window);
   // console.log(locationData);
-  // console.log(weatherData.list[0].weather[0].description);
+  // console.log(weatherData);
 
   /* For Weather Box Component
   
@@ -109,17 +109,15 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
 
 
   */
+  // const successCallback = (position) => {
+  //   console.log(position);
+  // };
 
-  /*
-  const successCallback = (position) => {
-    console.log(position);
-  };
+  // const errorCallback = (error) => {
+  //   console.log(error);
+  // };
 
-  const errorCallback = (error) => {
-    console.log(error);
-  };
-
-  navigator.geolocation.getCurrentPosition(successCallback, errorCallback); */
+  // navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
   // console.log(emojis.eyes);
 
@@ -310,7 +308,10 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
         <div className=" bg-main ml-[23.8rem] pl-10 dark:text-white dark:bg-main-dark duration-700 ease-in-out">
           <Tab
             data={[
-              { name: "Today", component: <Today /> },
+              {
+                name: "Today",
+                component: <Today data={weatherData.list.slice(0, 7)} />,
+              },
               { name: "Week", component: <Week /> },
             ]}
           />

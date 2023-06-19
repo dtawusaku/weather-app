@@ -25,6 +25,7 @@ export default {
         ayellow: "#FFDF4A",
         "yellow-dark": "#DDB91A",
         "blue-dark": "#2A337A",
+        "dark-white": "#2A2C38",
       },
       width: {
         sidebar: "23.9375rem",

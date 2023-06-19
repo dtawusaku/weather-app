@@ -86,7 +86,7 @@ import partlycloudynightsmoke from "../assets/lotties/weather-icons/partly-cloud
 import partlycloudynightsnow from "../assets/lotties/weather-icons/partly-cloudy-night-snow.json";
 import partlycloudynight from "../assets/lotties/weather-icons/partly-cloudy-night.json";
 import clearday from "../assets/lotties/weather-icons/clear-day.json";
-import clearnght from "../assets/lotties/weather-icons/clear-night.json";
+import clearnight from "../assets/lotties/weather-icons/clear-night.json";
 import drizzle from "../assets/lotties/weather-icons/drizzle.json";
 import cloudy from "../assets/lotties/weather-icons/cloudy.json";
 import dust from "../assets/lotties/weather-icons/dust.json";
@@ -98,6 +98,7 @@ import fognight from "../assets/lotties/weather-icons/fog-night.json";
 import hail from "../assets/lotties/weather-icons/hail.json";
 import mist from "../assets/lotties/weather-icons/mist.json";
 import rain from "../assets/lotties/weather-icons/rain.json";
+import snow from "../assets/lotties/weather-icons/snow.json";
 
 const day = {
   overcast: overcastday,
@@ -162,6 +163,10 @@ const others = {
   fahrenheit: fahrenheit,
   sunrise: sunrise,
   sunset: sunset,
+  rain: rain,
+  clearday: clearday,
+  clearnight: clearnight,
+  snow: snow,
 };
 
 export default { day, night, others };
