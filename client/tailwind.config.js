@@ -27,7 +27,7 @@ export default {
         "blue-dark": "#2A337A",
       },
       width: {
-        sidebar: "27.9375rem",
+        sidebar: "23.9375rem",
       },
       borderRadius: {
         xc: "0.8rem",

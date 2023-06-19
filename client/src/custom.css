@@ -65,3 +65,15 @@
   width: 100%;
   right: 50%;
 } */
+
+.container {
+  height: 100vh; /* Set the height to fill the viewport */
+  overflow-y: scroll; /* Enable vertical scrolling within the container */
+  scroll-snap-type: y mandatory; /* Enable scroll snapping behavior */
+}
+
+.scrollable-section {
+  scroll-snap-align: start; /* Ensure the section starts at the top after scrolling */
+  height: 100vh; /* Set the height to fill the viewport */
+  overflow-y: scroll; /* Enable vertical scrolling within the section */
+}

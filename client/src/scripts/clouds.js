@@ -50,7 +50,6 @@ import thunderstormovercastsnow from "../assets/lotties/weather-icons/thundersto
 import thunderstormovercast from "../assets/lotties/weather-icons/thunderstorms-overcast.json";
 import thuderstormsrain from "../assets/lotties/weather-icons/thunderstorms-rain.json";
 import thuderstormssnow from "../assets/lotties/weather-icons/thunderstorms-snow.json";
-
 import extremedrizzle from "../assets/lotties/weather-icons/extreme-drizzle.json";
 import extremefog from "../assets/lotties/weather-icons/extreme-fog.json";
 import extremehail from "../assets/lotties/weather-icons/extreme-hail.json";
@@ -166,4 +165,3 @@ const others = {
 };
 
 export default { day, night, others };
-//import { var1, var2, func1 } from "./your-module.js";
