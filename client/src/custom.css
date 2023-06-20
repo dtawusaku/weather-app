@@ -20,17 +20,17 @@
 #tooltip {
   position: relative;
   cursor: pointer;
-  padding: 7px;
-  font-size: 25px;
+  padding: 5px;
+  font-size: 0.8rem;
 }
 #tooltipText {
   position: absolute;
   left: 50%;
   top: 0;
   transform: translateX(-50%);
-  background-color: #000;
+  background-color: #2a2c38;
   color: #fff;
-  white-space: nowrap;
+  white-space: pre;
   padding: 10px 15px;
   border-radius: 7px;
   visibility: hidden;
@@ -49,7 +49,7 @@
 }
 
 #tooltip:hover #tooltipText {
-  top: -130%;
+  top: -200%;
   visibility: visible;
   opacity: 1;
 }

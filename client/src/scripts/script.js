@@ -22,25 +22,25 @@ window.addEventListener("scroll", function () {
   }
 });
 
-const container = document.querySelector(".container");
-const content = document.querySelector(".content");
+// const container = document.querySelector(".container");
+// const content = document.querySelector(".content");
 
-window.addEventListener("scroll", function () {
-  const viewportHeight = window.innerHeight;
-  const scrollPosition =
-    window.scrollY ||
-    document.documentElement.scrollTop ||
-    document.body.scrollTop ||
-    0;
+// window.addEventListener("scroll", function () {
+//   const viewportHeight = window.innerHeight;
+//   const scrollPosition =
+//     window.scrollY ||
+//     document.documentElement.scrollTop ||
+//     document.body.scrollTop ||
+//     0;
 
-  if (scrollPosition >= viewportHeight) {
-    content.classList.remove("relative");
-    content.classList.add("fixed");
-  } else {
-    content.classList.remove("fixed");
-    content.classList.add("relative");
-  }
-});
+//   if (scrollPosition >= viewportHeight) {
+//     content.classList.remove("relative");
+//     content.classList.add("fixed");
+//   } else {
+//     content.classList.remove("fixed");
+//     content.classList.add("relative");
+//   }
+// });
 
 /* HANDLES TEMPERATURE CHANGE   */
 window.addEventListener("load", () => {

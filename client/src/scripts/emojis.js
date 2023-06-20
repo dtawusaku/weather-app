@@ -8,6 +8,12 @@ import distraught from "../assets/lotties/emojis/distraught.json";
 import eyes from "../assets/lotties/emojis/eyes.json";
 import slightlyfrowning from "../assets/lotties/emojis/slightly-frowning.json";
 import thinkingface from "../assets/lotties/emojis/thinking-face.json";
+import monkeynosee from "../assets/lotties/emojis/monkeynosee.json";
+import thumbsup from "../assets/lotties/emojis/thumbsup.json";
+import thumbsdown from "../assets/lotties/emojis/thumbsdown.json";
+import weary from "../assets/lotties/emojis/weary.json";
+import diagonalmouth from "../assets/lotties/emojis/diagonalmouth.json";
+import relieved from "../assets/lotties/emojis/relieved.json";
 
 const emojis = {
   grimacing: grimacing,
@@ -20,6 +26,12 @@ const emojis = {
   distraught: distraught,
   "slightly-frowning": slightlyfrowning,
   thinkingface: thinkingface,
+  thumbsup: thumbsup,
+  thumbsdown: thumbsdown,
+  monkeynosee: monkeynosee,
+  weary: weary,
+  diagonalmouth: diagonalmouth,
+  relieved: relieved,
 };
 
 export default emojis;

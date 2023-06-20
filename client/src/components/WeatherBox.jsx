@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Lottie from "lottie-react";
 import "../custom.css";
-import weather from "../scripts/clouds";
+import { motion } from "framer-motion";
 
 export default function WeatherBox({ data }) {
   const [isClicked, setisClicked] = useState(false);
@@ -22,7 +22,11 @@ export default function WeatherBox({ data }) {
   // console.log(data);
 
   return (
-    <div className=" dark:bg-white-dark weather-box  flex flex-col text-center justify-between py-3">
+    <motion.div
+      className=" dark:bg-white-dark weather-box  flex flex-col text-center justify-between py-3"
+      // whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      onClick={{ scale: 2.5 }}>
       {/* <div>Sun</div> */}
       <div className=" font-medium">{data.time}</div>
       <div className=" ml-5">
@@ -35,6 +39,6 @@ export default function WeatherBox({ data }) {
         {/* 15&deg; <sup>c</sup> */}
         {data.temp}&deg; <sup>c</sup>
       </div>
-    </div>
+    </motion.div>
   );
 }

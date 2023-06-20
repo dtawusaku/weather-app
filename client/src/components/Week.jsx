@@ -1,16 +1,19 @@
 import React from "react";
 import WeatherBox from "../components/WeatherBox";
-import thinkingface from "../assets/lotties/emojis/thinking-face.json";
 import Lottie from "lottie-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Week() {
   return (
-    <div>
+    <motion.div
+      initial={{ x: 300, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -300, opacity: 0 }}>
       <div className="my-[4.125rem] flex gap-4 hover:overflow-auto w-full overflow-hidden">
+        {/* <WeatherBox />
         <WeatherBox />
         <WeatherBox />
-        <WeatherBox />
-        <WeatherBox />
+        <WeatherBox /> */}
       </div>
       <div className="mb-[2.4375rem]">
         <div className="flex">
@@ -49,11 +52,7 @@ export default function Week() {
               <h1 className="font-semibold">Wind Status</h1>
               <div id="tooltip">
                 <span id="tooltipText">Hi there</span>
-                <Lottie
-                  animationData={thinkingface}
-                  style={{ width: "2rem" }}
-                  loop={false}
-                />
+                hu
               </div>
             </div>
           </div>
@@ -98,6 +97,6 @@ export default function Week() {
         </div>
         {/* Condition Box end */}
       </div>
-    </div>
+    </motion.div>
   );
 }

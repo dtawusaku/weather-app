@@ -1,5 +1,6 @@
 import { format } from "date-fns"; //Date Formatting
 import clouds from "./clouds";
+import emojis from "./emojis";
 
 //Remember For Day and night.
 function selectLottieByDescriptionDay(description) {
@@ -139,10 +140,91 @@ function weekDataLogicHandling() {
   const formattedTime = format(dateTime, "HH:mm");
 }
 
+//TODO: Complete this!
+function airPressureCheck() {}
+function airpressurelottie() {}
+
+function humidityCheck(value) {
+  if (value < 30) {
+    return "Dry";
+  } else if ((value >= 30) & (value < 70)) {
+    return "Normal";
+  } else {
+    return "So Moist";
+  }
+}
+function humiditylottie(humiditycomment) {
+  switch (humiditycomment) {
+    case "Dry":
+      return emojis.thumbsdown;
+      break;
+    case "Normal":
+      return emojis.thumbsup;
+      break;
+    case "So Moist":
+      return emojis.weary;
+      break;
+    default:
+      return { message: "Error occured" };
+      break;
+  }
+}
+
+function metersToKilometers(meters) {
+  return meters / 1000;
+}
+
+function visibilityCheck(value) {
+  const km = parseFloat(metersToKilometers(value));
+  // console.log(km);
+
+  if (km >= 0 && km <= 0.5) {
+  } else if (km >= 0 && km < 0.5) {
+    return "Oh my";
+  } else if (km >= 0.5 && km < 3.0) {
+    return "Poor";
+  } else if (km >= 3.0 && km < 5.0) {
+    return "Moderate";
+  } else if (km >= 5.0) {
+    return "Excellent";
+  }
+}
+function visibilitylottie(comment) {
+  switch (comment) {
+    case "Oh my":
+      return emojis.monkeynosee;
+      break;
+    case "Poor":
+      return emojis.diagonalmouth;
+      break;
+    case "Moderate":
+      return emojis.relieved;
+    case "Excellent":
+      return emojis.relieved;
+    default:
+      return { message: "Error occurred" };
+      break;
+  }
+}
+
+function getWindDirection(degrees) {
+  const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+  const index = Math.round(degrees / 45) % 8;
+  return directions[index];
+}
+
 export default {
   weekDataLogicHandling,
   todayhightlightslogic,
   todayDataLogicHandling,
   selectLottieByDescriptionDay,
   selectLottieByDescriptionNight,
+  airpressurelottie,
+  visibilitylottie,
+  humiditylottie,
+  airPressureCheck,
+  visibilityCheck,
+  humidityCheck,
+  getWindDirection,
+  metersToKilometers,
 };

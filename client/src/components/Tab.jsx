@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../custom.css";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, transform } from "framer-motion";
 
 export default function Tab({ data }) {
   const [activeTab, setactiveTab] = useState(0);
@@ -13,6 +13,7 @@ export default function Tab({ data }) {
     { id: 1, name: "How to Eat", title: "Yam" },
     { id: 2, name: "How to drink", title: "tea" },
   ];
+
   return (
     <div className="tab">
       <div className="h-[3.6875rem] flex justify-between pt-6 pr-4">
@@ -29,6 +30,7 @@ export default function Tab({ data }) {
               {entry.name}
             </div>
           ))}
+
           {/* Dynammin end */}
         </div>
         <div className="">
