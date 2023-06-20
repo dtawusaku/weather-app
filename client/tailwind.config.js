@@ -28,6 +28,7 @@ export default {
         "dark-white": "#2A2C38",
         "my-gray": "#A5A5A5",
         "my-gray-dark": "#7B7B7B",
+        mypurple: "#8a2be2",
       },
       width: {
         sidebar: "23.9375rem",

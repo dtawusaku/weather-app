@@ -8,6 +8,7 @@ import Today from "./components/Today";
 import Week from "./components/Week";
 import { format } from "date-fns"; //For Date formatting
 import "./scripts/script";
+import functions from "./scripts/functions";
 
 function App() {
   const [location, setLocation] = useState("");
@@ -60,20 +61,6 @@ function App() {
   // console.log(window);
   // console.log(locationData);
   // console.log(weatherData);
-
-  /* For Weather Box Component
-  
-    box = { 
-      today : {
-        "day" : weatherData.list[0].dt_txt,
-        "description": "weatherData.list[0].weather[0].description",
-        "temp": weatherData.list[0].main.temp, 
-      },
-      week : {
-
-      }
-    }
-  */
 
   const dateTimeString = "2023-06-14 21:00:00";
   const dateTime = new Date(dateTimeString);
@@ -306,15 +293,31 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
 
         {/* Main */}
         <div className=" bg-main ml-[23.8rem] pl-10 dark:text-white dark:bg-main-dark duration-700 ease-in-out">
-          <Tab
-            data={[
-              {
-                name: "Today",
-                component: <Today data={weatherData.list.slice(0, 7)} />,
-              },
-              { name: "Week", component: <Week /> },
-            ]}
-          />
+          {weatherData && (
+            <Tab
+              data={[
+                {
+                  name: "Today",
+                  component: (
+                    <Today
+                      data={{
+                        main: weatherData.list.slice(
+                          0,
+                          functions.sliceDeterminerByHour(
+                            weatherData.list[0].dt_txt
+                          )
+                        ),
+                        sunrise: weatherData.city.sunrise,
+                        sunset: weatherData.city.sunset,
+                        timezone: weatherData.city.timezone,
+                      }}
+                    />
+                  ),
+                },
+                { name: "Week", component: <Week /> },
+              ]}
+            />
+          )}
         </div>
         {/* Main end */}
       </div>

@@ -213,6 +213,61 @@ function getWindDirection(degrees) {
   return directions[index];
 }
 
+function sliceDeterminerByHour(dt_string) {
+  const dateTime = new Date(dt_string);
+  const hours = dateTime.getHours();
+
+  if (hours > 0 && hours < 3) {
+  } else if (hours >= 0 && hours < 3) {
+    return 7;
+  } else if (hours >= 3 && hours < 6) {
+    return 6;
+  } else if (hours >= 6 && hours < 9) {
+    return 5;
+  } else if (hours >= 9 && hours < 12) {
+    return 4;
+  } else if (hours >= 12 && hours < 15) {
+    return 3;
+  } else if (hours >= 15 && hours < 18) {
+    return 2;
+  } else if (hours >= 18 && hours < 21) {
+    return 1;
+  }
+  // 00:00 slice 7
+  // 03:00 slice 6
+  // 06:00 slice 5
+  // 09:00 slice 4
+  // 12:00 slice 3
+  // 15:00 slice 2
+  // 18:00 sllice 1
+  // 21:00 slice 0
+}
+//FIXME: Showing time based on the current user timezone.
+function formatTime(date, offsetSeconds) {
+  const utcOffsetHours = offsetSeconds / 3600; // Convert seconds to hours
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+    hourCycle: "h23",
+    timeZone: "UTC",
+    // timeZone: `UTC${utcOffsetHours >= 0 ? "+" : "-"}${Math.abs(utcOffsetHours)
+    //   .toString()
+    //   .padStart(2, "0")}:${Math.abs((offsetSeconds % 3600) / 60)
+    //   .toString()
+    //   .padStart(2, "0")}`,
+  }).format(date);
+
+  const [time, period] = formattedDate.split(" ");
+  const [hour, minute] = time.split(":");
+  const formattedTime = `${hour.padStart(
+    2,
+    "0"
+  )}:${minute}${period.toUpperCase()}`;
+
+  return formattedTime;
+}
+
 export default {
   weekDataLogicHandling,
   todayhightlightslogic,
@@ -227,4 +282,6 @@ export default {
   humidityCheck,
   getWindDirection,
   metersToKilometers,
+  sliceDeterminerByHour,
+  formatTime,
 };

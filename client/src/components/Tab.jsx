@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "../custom.css";
-import { motion, AnimatePresence, transform } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  transform,
+  AnimateSharedLayout,
+} from "framer-motion";
 
 export default function Tab({ data }) {
   const [activeTab, setactiveTab] = useState(0);
@@ -60,50 +65,19 @@ export default function Tab({ data }) {
                 </div>
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 flex items-center justify-center font-bold text-white dark:bg-gradient-to-r dark:from-[#165E7F] dark:to-[#272BC7]">
+            <motion.div
+              initial={{}}
+              animate={{}}
+              variants={{}}
+              className="w-12 h-12 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 flex items-center justify-center font-bold text-white dark:bg-gradient-to-r dark:from-[#165E7F] dark:to-[#272BC7]">
               DT
-            </div>
+            </motion.div>
           </div>
           {/* Degree Temperature End */}
         </div>
       </div>
 
-      <div className="tab-body">
-        <div>
-          Something HERE
-          {items.map((item) => (
-            <motion.div
-              layoutId={item.id}
-              className="bg-red-500 mt-2"
-              onClick={() => setSelectedId(item.id)}>
-              <motion.h5>{item.subtitle}</motion.h5>
-              <motion.h2>{item.title}</motion.h2>
-            </motion.div>
-          ))}
-          <AnimatePresence>
-            {selectedId && (
-              <motion.div
-                layoutId={selectedId}
-                initial={{}}
-                animate={{ backgroundColor: "yellow" }}
-                exit={{ opacity: 0 }}>
-                <motion.h5 className="bg-blue-300 mt-2">
-                  items[selectedId].subtitle
-                </motion.h5>
-                <motion.h2 className="bg-blue-300 mt-2">
-                  items[selectedId].title
-                </motion.h2>
-                <motion.button
-                  className="bg-pink-700"
-                  onClick={() => setSelectedId(null)}>
-                  G
-                </motion.button>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-        {data[activeTab].component}
-      </div>
+      <div className="tab-body">{data[activeTab].component}</div>
     </div>
   );
 }

@@ -6,9 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Week() {
   return (
     <motion.div
-      initial={{ x: 300, opacity: 0 }}
+      initial={{ x: 50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      exit={{ x: -300, opacity: 0 }}>
+      exit={{ x: -300, opacity: 0 }}
+      transition={{ duration: 0.2 }}>
       <div className="my-[4.125rem] flex gap-4 hover:overflow-auto w-full overflow-hidden">
         {/* <WeatherBox />
         <WeatherBox />

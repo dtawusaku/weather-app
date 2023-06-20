@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Lottie from "lottie-react";
 import "../custom.css";
 import { motion } from "framer-motion";
+import Modal from "./Modal";
 
 export default function WeatherBox({ data }) {
   const [isClicked, setisClicked] = useState(false);
   const [count, setCount] = useState(0);
+  const [openModal, setopenModal] = useState(false);
 
   const animate = () => {
     if (isAnimating) {
@@ -19,6 +21,8 @@ export default function WeatherBox({ data }) {
     setisClicked(!isClicked);
   };
 
+  const open = () => setopenModal(false);
+  const close = () => setopenModal(true);
   // console.log(data);
 
   return (
@@ -35,10 +39,18 @@ export default function WeatherBox({ data }) {
           style={{ width: "5rem" }}
         />
       </div>
+      {/* <button onClick={() => (openModal ? close() : open())}>Open</button> */}
       <div className=" font-medium">
         {/* 15&deg; <sup>c</sup> */}
         {data.temp}&deg; <sup>c</sup>
       </div>
+
+      {openModal && (
+        <Modal
+          openModal={openModal}
+          handleClose={close}
+        />
+      )}
     </motion.div>
   );
 }
