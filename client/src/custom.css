@@ -1,0 +1,92 @@
+.weather-box {
+  height: 9.8125rem;
+  width: 7.625rem; /* 122px */
+  position: sticky;
+  border-radius: 0.8rem;
+  background-color: white;
+}
+
+.weather-box1 {
+  position: absolute;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 5;
+
+  top: 50%;
+  bottom: 50%;
+}
+
+#tooltip {
+  position: relative;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 0.8rem;
+}
+#tooltipText {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background-color: #2a2c38;
+  color: #fff;
+  white-space: pre;
+  padding: 10px 15px;
+  border-radius: 7px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#tooltipText::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border: 15px solid;
+  border-color: #000 #0000 #0000 #0000;
+}
+
+#tooltip:hover #tooltipText {
+  top: -200%;
+  visibility: visible;
+  opacity: 1;
+}
+.actived {
+  color: #8a2be2;
+}
+/* .actived::after {
+  content: "";
+  position: absolute;
+  background-color: #ff3c78;
+  height: 2px;
+  border-radius: 2px;
+  width: 100%;
+  right: 50%;
+} */
+
+/* BackDrop */
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000000e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  height: 100vh; /* Set the height to fill the viewport */
+  overflow-y: scroll; /* Enable vertical scrolling within the container */
+  scroll-snap-type: y mandatory; /* Enable scroll snapping behavior */
+}
+
+.scrollable-section {
+  scroll-snap-align: start; /* Ensure the section starts at the top after scrolling */
+  height: 100vh; /* Set the height to fill the viewport */
+  overflow-y: scroll; /* Enable vertical scrolling within the section */
+}
