@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import weather from "./scripts/clouds";
-import Typewriter from "typewriter-effect";
 import "./custom.css";
 import Tab from "./components/Tab";
 import Today from "./components/Today";
@@ -9,25 +8,60 @@ import Week from "./components/Week";
 import { format } from "date-fns"; //For Date formatting
 import "./scripts/script";
 import functions from "./scripts/functions";
+import TypeWriterContainer from "./components/TypeWriterContainer";
 
 function App() {
-  const [location, setLocation] = useState("");
-  const [locationData, setlocationData] = useState(null);
-  const [weatherData, setweatherData] = useState(null);
+  const [userLocation, setUserLocation] = useState(null); // User's Location
+  const [location, setLocation] = useState(null); // Location from input
+  const [locationData, setlocationData] = useState(null); // Locaton data gotten from API
+  const [weatherData, setweatherData] = useState(null); // wetaher data gotten from API
+  const [temperature, setTemperature] = useState(null);
 
   const [theme, setTheme] = useState(localStorage.getItem("theme")); // Theme is stored in local storage.
   const themeQuery = window.matchMedia("(prefer-color-scheme:dark)"); //For theme FIXME: Why are you still here?
 
+  /*
+   *  ACCESSING USER LOCATION
+   *
+   */
+  // useEffect(() => {
+  //   const successCallback = (position) => {
+  //     setUserLocation({
+  //       lat: position.coords.latitude,
+  //       lon: position.coords.longitude,
+  //     });
+  //     console.log(userLocation);
+  //   };
+
+  //   const errorCallback = (error) => {
+  //     setUserLocation(null);
+  //   };
+
+  //   //Grants and later denies or denies and later grants
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  //   } else {
+  //     setUserLocation(null);
+  //   }
+  // }, [userLocation]);
+
   //TODO: Add location and temperature degree as dependencies
   useEffect(() => {
-    fetch("http://localhost:3000")
+    // fetch(
+    //   `http://localhost:3000?location=${location}&lat=${userLocation.lat}&lon=${userLocation.lon}`
+    // )
+    fetch(`http://localhost:3000?location=${location}`)
       .then((response) => response.json())
       .then((data) => {
         setlocationData(data.location);
         setweatherData(data.weather);
       });
-  }, []);
+  }, [location]);
 
+  /*
+   *  NOTE: THEME SETTINGS
+   *
+   */
   useEffect(() => {
     switch (theme) {
       case "dark":
@@ -96,39 +130,148 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
 
 
   */
-  // const successCallback = (position) => {
-  //   console.log(position);
-  // };
-
-  // const errorCallback = (error) => {
-  //   console.log(error);
-  // };
-
-  // navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
   // console.log(emojis.eyes);
 
+  // console.log(userLocation);
+
   return (
     <>
-      <div className=" bg-[#BED7F3] lg:hidden container relative h-full">
-        <div className=" bg-cyan-700 block h-[70rem]"> First Div</div>
-        <div className=" bg-pink-700 block h-[70rem] content relative">
-          {" "}
-          <h1>Second Div</h1>
-          <p className="mt-4 bg-yellow-200">This is Paragraph 1</p>
-          <p className="mt-4">This is Paragraph 2</p>
-          <p className="mt-4">This is Paragraph 3</p>
-          <p className="mt-4">This is Paragraph 4</p>
-          <p className="mt-4 bg-yellow-200">This is Paragraph 5</p>
-          <p className="mt-4 bg-yellow-200">This is Paragraph 6</p>
-          <p className="mt-6 bg-yellow-200">This is Paragraph 7</p>
-          <p className="mt-6 bg-yellow-200">This is Paragraph 8</p>
-          <p className="mt-6 bg-yellow-200">This is Paragraph 9</p>
-          <p className="mt-6 bg-yellow-200">This is Paragraph 10</p>
-          <p className="mt-6 bg-yellow-200">This is Paragraph 11</p>
+      <div className=" bg-[#BED7F3] lg:hidden container relative h-full dark:bg-mblue-dark transition-all">
+        <div className=" bg-mblue dark:bg-mblue-dark mscreen transition-all">
+          {/* Theme button */}
+          <div
+            className=" bg-gray-400 mt-2 inline-block rounded-full py-1 px-1 text-white dark:text-black dark:bg-slate-200 relative left-3/4 ml-14"
+            onClick={handleThemeSwitch}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+              />
+            </svg>
+          </div>
+          {/* Search input */}
+          <div className=" mt-2 mx-6">
+            <div className="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg
+                  class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20">
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="search"
+                id="default-search"
+                class="block w-full py-2.5 pl-10 rounded-full text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search for a city, country or state"></input>
+              <div className=" flex">
+                <div class="text-white w-8 h-8 rounded-full absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  NG
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Searh cinput end */}
+          {/* Weather */}
+          <div className=" flex-row mt-14">
+            {/* location */}
+            <div>
+              {" "}
+              <h1 className=" font-bold capitalize text-s4 text-center text-mblue-text ">
+                Los Angelos
+              </h1>
+            </div>
+            {/* Wether */}
+            <div className="flex-row">
+              <div>
+                {" "}
+                <h1 className=" font-bold text-s12 text-center bg-clip-text text-transparent bg-gradient-to-b from-bluegradient from-50% to-white to-90% dark:bg-gradient-to-b dark:from-white dark:from-50%  dark:to-bluegradient dark:to-90%">
+                  35
+                  <sup className=" text-s8 text-mblue-textdeg">&deg;</sup>
+                </h1>
+              </div>
+              <div
+                className=" -mt-24 -mb-16"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}>
+                <div>
+                  {" "}
+                  <Lottie
+                    animationData={weather.day.overcast}
+                    style={{ width: "17rem" }}
+                  />
+                </div>
+              </div>
+              {/* datetime */}
+              <div className="">
+                <h1 className=" font-semibold capitalize text-center text-s4 text-mblue-text">
+                  Wednesday, oct 21
+                </h1>
+              </div>
+            </div>
+          </div>
+          {/* Wether End */}
         </div>
+        {/* Main  */}
+        <div className=" h-full rounded-tl-[2rem] rounded-tr-[2rem] bg-[#FAFAFA] p-4">
+          {/* :TODO: Add Conditional Rendering */}
+          {!weatherData && (
+            <div className=" text-s2 text-center font-medium my-12">
+              <p>No Data Available</p>
+              <p className=" text-sm text-gray-400 font-light">
+                (Enter Location | grant acess to location)
+              </p>
+            </div>
+          )}
+          {weatherData && (
+            <Tab
+              data={[
+                {
+                  name: "Today",
+                  component: (
+                    <Today
+                      data={{
+                        main: weatherData.list.slice(
+                          0,
+                          functions.sliceDeterminerByHour(
+                            weatherData.list[0].dt_txt
+                          )
+                        ),
+                        sunrise: weatherData.city.sunrise,
+                        sunset: weatherData.city.sunset,
+                        timezone: weatherData.city.timezone,
+                      }}
+                    />
+                  ),
+                },
+                { name: "Week", component: <Week /> },
+              ]}
+            />
+          )}
+        </div>
+        {/* Main End */}
 
-        <div className=" bg-blue-700 block h-[70rem]">Thord Div</div>
+        <div className="block h-[70rem] ">Thord Div</div>
         {/* Scroll Testing */}
         {/* <div class="container">
           <div
@@ -149,6 +292,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
         </div> */}
         {/* Scroll Testing End */}
       </div>
+      {/* ----- */}
       <div className=" hidden lg:block">
         {/*--------------  SideBar --------- */}
         <aside className="h-screen fixed top-0 left-0 w-sidebar  bg-white m-0 duration-700 transition ease-in-out dark:text-white">
@@ -201,7 +345,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                       handleSetLocation(event);
                     }
                   }}></input>
-                {location}
+                {location ? location : "O"}
 
                 <div className="flex justify-end pr-4">
                   <button
@@ -264,25 +408,8 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                   className="w-full h-full object-cover  rounded-lg opacity-75"></img>
                 <h1 className=" font-semibold text-lg text-white text-center -translate-y-[4.3rem]">
                   {/* Might use set timeout fucntion for this typewriter thing */}
-                  <Typewriter
-                    options={{
-                      strings: `${
-                        location
-                          ? location.state
-                            ? locationData.name +
-                              ", " +
-                              location.state +
-                              ", " +
-                              locationData.country
-                            : "Hi there"
-                          : "Hi there"
-                      }`,
-
-                      autoStart: true,
-                      loop: false,
-                      //   delay: 1175,
-                    }}
-                  />
+                  {/* TODO: */}
+                  {/* {location && <TypeWriterContainer location={locationData} />} */}
                 </h1>
               </div>
             </div>
@@ -293,6 +420,12 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
 
         {/* Main */}
         <div className=" bg-main ml-[23.8rem] pl-10 dark:text-white dark:bg-main-dark duration-700 ease-in-out">
+          {!weatherData && (
+            <div className=" h-screen">
+              {" "}
+              Accept Location access or enter a location
+            </div>
+          )}
           {weatherData && (
             <Tab
               data={[

@@ -5,7 +5,6 @@ import functions from "../scripts/functions.js";
 import { format } from "date-fns";
 import clouds from "../scripts/clouds";
 import { motion, AnimatePresence } from "framer-motion";
-
 export default function Today({ data }) {
   // console.log(data);
   // const [isHovered, setIsHovered] = useState(false);
@@ -24,11 +23,12 @@ export default function Today({ data }) {
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.2 }}
       exit={{ x: 300, opacity: 0 }}>
-      <div className="my-[4.125rem] flex gap-4 hover:overflow-auto w-full overflow-hidden">
+      <div className="my-[4.125rem] flex gap-4 w-full">
         {data.main.map((data) => (
           <WeatherBox data={functions.todayDataLogicHandling(data)} />
         ))}
       </div>
+
       <div className="mb-[2.4375rem]">
         <div className="flex">
           {" "}
@@ -82,14 +82,16 @@ export default function Today({ data }) {
           </div>
           <div className=" flex">
             <h1 className=" text-s2 font-semibold mt-1 -translate-y-0.5">
-              Comment
+              Undefined
             </h1>{" "}
             {/* <div className="ml-2">Lottie</div> */}
           </div>
         </div>
         {/* Condition Box end */}
         {/* Condition Box */}
-        <div className=" w-[16.3125rem] h-[14.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc px-6 py-5 justify-between text-center">
+        <div
+          id="rty"
+          className=" w-[16.3125rem]  h-[14.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc pl-8 pr-4 pt-5 pb-4 justify-between">
           <div className="">
             <div className="flex justify-between">
               <h1 className="font-meduim text-my-gray dark:text-my-gray-dark text-s2 dark:font-semibold">
@@ -158,7 +160,7 @@ export default function Today({ data }) {
         {/* Condition Box end */}
 
         {/* Condition Box */}
-        <div className=" w-[16.3125rem] h-[14.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc px-6 py-5 justify-between">
+        <div className=" w-[16.3125rem] h-[14.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc pl-8 pr-4 pt-5 pb-4 justify-between">
           <div className="">
             <div className="flex justify-between">
               <h1 className="font-meduim text-my-gray dark:text-my-gray-dark text-s2 dark:font-semibold">
@@ -217,7 +219,7 @@ export default function Today({ data }) {
         {/* Condition Box end */}
 
         {/* Condition Box */}
-        <div className=" w-[16.3125rem] h-[14.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc px-6 py-5 justify-between  text-center">
+        <div className=" w-[16.3125rem] h-[14.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc pl-8 pr-4 pt-5 pb-4 justify-between">
           <div className="">
             <div className="flex justify-between">
               <h1 className="font-meduim text-my-gray dark:text-my-gray-dark text-s2 dark:font-semibold">
@@ -273,7 +275,7 @@ export default function Today({ data }) {
         </div>
         {/* Condition Box end */}
         {/* Condition Box */}
-        <div className=" w-[16.3125rem] h-[14.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc px-6 py-5 justify-between text-center">
+        <div className=" w-[16.3125rem] h-[14.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc pl-8 pr-4 pt-5 pb-4 justify-between">
           <div className="">
             <div className="flex justify-between">
               <h1 className="font-meduim text-my-gray dark:text-my-gray-dark text-s2 dark:font-semibold">
@@ -329,7 +331,7 @@ export default function Today({ data }) {
         </div>
         {/* Condition Box end */}
         {/* Condition Box */}
-        <div className=" w-[16.3125rem] h-[14.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc px-6 py-5 justify-between">
+        <div className=" w-[16.3125rem] h-[14.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc pl-8 pr-4 pt-5 pb-4 justify-between">
           <div className="">
             <div className="flex justify-between">
               <h1 className="font-meduim text-my-gray dark:text-my-gray-dark text-s2 dark:font-semibold">

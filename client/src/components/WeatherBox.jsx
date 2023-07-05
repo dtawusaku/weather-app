@@ -1,55 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import "../custom.css";
 import { motion } from "framer-motion";
-import Modal from "./Modal";
+import "../scripts/script.js";
 
 export default function WeatherBox({ data }) {
   const [isClicked, setisClicked] = useState(false);
-  const [count, setCount] = useState(0);
-  const [openModal, setopenModal] = useState(false);
+  const [showPill, setShowPill] = useState(false);
 
-  const animate = () => {
-    if (isAnimating) {
-      setAnimating((isAnimating = false));
-    } else {
-      setAnimating((isAnimating = true));
-    }
+  /* Show description */
+  const handleMouseEnter = () => {
+    setShowPill(true);
+
+    setTimeout(() => {
+      setShowPill(false);
+    }, 500);
   };
-
-  const clicked = () => {
-    setisClicked(!isClicked);
+  const handleMouseLeave = () => {
+    setShowPill(false);
   };
+  /*------------------------*/
 
-  const open = () => setopenModal(false);
-  const close = () => setopenModal(true);
+  const clicked = (event) => {
+    setisClicked("Yes");
+    // if (event.type == "click") {
+    //   console.log(event.target.classList);
+    // }
+  };
+  useEffect(() => {}, []);
+  // useEffect(() => {
+  //   const handleClick = (event) => {
+  //     if (event.target.classList.contains("weather-box")) {
+  //       console.log("You clicked a card");
+  //     }
+  //   };
+
+  //   const weatherContainer = document.querySelector(".weather-container");
+  //   weatherContainer.addEventListener("click", handleClick);
+
+  //   return () => {
+  //     weatherContainer.removeEventListener("click", handleClick);
+  //   };
+  // }, []);
+
   // console.log(data);
 
   return (
     <motion.div
-      className=" dark:bg-white-dark weather-box  flex flex-col text-center justify-between py-3"
+      className=" lg:dark:bg-white-dark weather-box  flex flex-col text-center justify-between py-3 dark:bg-mb-white"
       // whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      onClick={{ scale: 2.5 }}>
+      onClick={clicked}>
       {/* <div>Sun</div> */}
       <div className=" font-medium">{data.time}</div>
-      <div className=" ml-5">
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className=" ml-5">
         <Lottie
           animationData={data.lottie}
           style={{ width: "5rem" }}
         />
       </div>
-      {/* <button onClick={() => (openModal ? close() : open())}>Open</button> */}
       <div className=" font-medium">
-        {/* 15&deg; <sup>c</sup> */}
-        {data.temp}&deg; <sup>c</sup>
+        {/* 15&deg; <sup>c </sup> */}
+        {data.temp}&deg;
+        <sup>c </sup>
       </div>
-
-      {openModal && (
-        <Modal
-          openModal={openModal}
-          handleClose={close}
-        />
+      {showPill && (
+        <div className=" bg-pink-500 rounded-md px-1.5 py-0.5 absolute top-1/2 left-0 text-xs  transition ease-in-out">
+          {" "}
+          {data.description}
+        </div>
       )}
     </motion.div>
   );
