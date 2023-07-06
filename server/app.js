@@ -12,19 +12,13 @@ app.get("/", function (req, res) {
   let location = req.query.location;
   let userLocationLatitude = req.query.lat;
   let userLocationLongitude = req.query.lon;
-  console.log(location);
-  // if (userLocationLatitude && userLocationLongitude) {
-  //   console.log("User Location Dey");
-  // }
-  // if (userLocationLatitude && location) {
-  //   console.log("Normal Location andd User Location Dey");
-  // }
 
   let geolocationData = null; //Geolocation data from GeoCoding API
   let weatherData = null;
 
+  // FOR LOCATION INPUTS
   if (location) {
-    console.log("Only User Location dey");
+    console.log(location);
 
     // First use the Geo-location API
     axios
@@ -49,7 +43,10 @@ app.get("/", function (req, res) {
         // console.log(latitude,longitude);
         // res.json(geolocationData);
         // console.log(weatherData,geolocationData);
-        res.json({ weather: weatherData, location: geolocationData }); // response working!!!
+        res.json({
+          weather: weatherData,
+          location: geolocationData,
+        }); // response working!!!
       })
       .catch((error) => {
         // Handle any errors that occur during the request
@@ -57,6 +54,27 @@ app.get("/", function (req, res) {
           error: error,
           message: "Error occured from geo location",
         });
+      });
+  }
+  // FOR USER LOCATION
+  else if (userLocationLatitude) {
+    console.log(userLocationLatitude, userLocationLongitude);
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${userLocationLatitude}&lon=${userLocationLongitude}&units=metric&appid=${process.env.APP_ID}`
+      )
+      .then((response) => {
+        weatherData = response.data;
+        // console.log(latitude,longitude);
+        // res.json(geolocationData);
+        // console.log(weatherData,geolocationData);
+        res.json({
+          weather: weatherData,
+          location: {
+            name: weatherData.city.name,
+            country: weatherData.city.country,
+          },
+        }); // response working!!!
       });
   }
 

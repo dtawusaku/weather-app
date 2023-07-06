@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Lottie from "lottie-react";
+import monkey from "../src/assets/lotties/emojis/monkeynosee.json";
 import weather from "./scripts/clouds";
 import "./custom.css";
 import Tab from "./components/Tab";
@@ -24,39 +25,31 @@ function App() {
    *  ACCESSING USER LOCATION
    *
    */
-  // useEffect(() => {
-  //   const successCallback = (position) => {
-  //     setUserLocation({
-  //       lat: position.coords.latitude,
-  //       lon: position.coords.longitude,
-  //     });
-  //     console.log(userLocation);
-  //   };
-
-  //   const errorCallback = (error) => {
-  //     setUserLocation(null);
-  //   };
-
-  //   //Grants and later denies or denies and later grants
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-  //   } else {
-  //     setUserLocation(null);
-  //   }
-  // }, [userLocation]);
-
-  //TODO: Add location and temperature degree as dependencies
+  // :TODO: Work Here
   useEffect(() => {
-    // fetch(
-    //   `http://localhost:3000?location=${location}&lat=${userLocation.lat}&lon=${userLocation.lon}`
-    // )
-    fetch(`http://localhost:3000?location=${location}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setlocationData(data.location);
-        setweatherData(data.weather);
+    const successCallback = (position) => {
+      setUserLocation({
+        lat: position.coords.latitude,
+        lon: position.coords.longitude,
       });
-  }, [location]);
+      console.log(userLocation);
+    };
+
+    const errorCallback = (error) => {
+      setUserLocation(null);
+    };
+
+    //Grants and later denies or denies and later grants
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    } else {
+      setUserLocation(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log(userLocation);
+  }, [userLocation]);
 
   /*
    *  NOTE: THEME SETTINGS
@@ -91,6 +84,34 @@ function App() {
     event.preventDefault();
     setLocation(event.target[0].value);
   };
+
+  //TODO: Add temperature degree as dependencies
+  useEffect(() => {
+    if (location) {
+      fetch(`http://localhost:3000?location=${location}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setlocationData(data.location);
+          setweatherData(data.weather);
+        });
+    } else if (userLocation) {
+      const { lat, lon } = userLocation;
+      fetch(`http://localhost:3000?&lat=${lat}&lon=${lon}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setlocationData(data.location);
+          setweatherData(data.weather);
+        });
+    }
+    // if (location) {
+    //   fetch(`http://localhost:3000?location=${location}`)
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       setlocationData(data.location);
+    //       setweatherData(data.weather);
+    //     });
+    // }
+  }, [location, userLocation]);
 
   // console.log(window);
   // console.log(locationData);
@@ -189,52 +210,90 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
             </div>
           </div>
           {/* Searh cinput end */}
-          {/* Weather */}
-          <div className=" flex-row mt-14">
-            {/* location */}
+          {/* :TODO: Add Conditional rendering */}
+          {/* Monkey no see */}
+          {/* <div
+            className=" mt-40 "
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
             <div>
               {" "}
-              <h1 className=" font-bold capitalize text-s4 text-center text-mblue-text ">
-                Los Angelos
-              </h1>
+              <Lottie
+                animationData={monkey}
+                style={{ width: "10rem" }}
+              />
             </div>
-            {/* Wether */}
-            <div className="flex-row">
+          </div> */}
+          {/* Monkey no see */}
+          <div className="">
+            {/* Weather */}
+            <div className=" flex-row mt-10">
+              {/* location */}
               <div>
                 {" "}
-                <h1 className=" font-bold text-s12 text-center bg-clip-text text-transparent bg-gradient-to-b from-bluegradient from-50% to-white to-90% dark:bg-gradient-to-b dark:from-white dark:from-50%  dark:to-bluegradient dark:to-90%">
-                  35
-                  <sup className=" text-s8 text-mblue-textdeg">&deg;</sup>
+                <h1 className=" font-bold capitalize text-s4 md:text-s5 text-center text-mblue-text ">
+                  Los Angelos
                 </h1>
               </div>
-              <div
-                className=" -mt-24 -mb-16"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}>
+              {/* Wether */}
+              <div className="flex-row md:-mt-2">
                 <div>
                   {" "}
-                  <Lottie
-                    animationData={weather.day.overcast}
-                    style={{ width: "17rem" }}
-                  />
+                  <h1 className=" font-bold text-s12 md:text-s14 text-center bg-clip-text text-transparent bg-gradient-to-b from-bluegradient from-50% to-white to-90% dark:bg-gradient-to-b dark:from-white dark:from-50%  dark:to-bluegradient dark:to-90%">
+                    35
+                    <sup className=" text-s8 text-mblue-textdeg">&deg;</sup>
+                  </h1>
+                </div>
+                <div className=" md:hidden">
+                  <div
+                    className=" -mt-24 -mb-16"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}>
+                    <div>
+                      {" "}
+                      <Lottie
+                        animationData={weather.day.overcast}
+                        style={{ width: "17rem" }}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className=" hidden md:block">
+                  <div
+                    className=" -mt-28 -mb-16"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}>
+                    <div>
+                      {" "}
+                      <Lottie
+                        animationData={weather.day.overcast}
+                        style={{ width: "20rem" }}
+                      />
+                    </div>
+                  </div>
+                </div>
+                {/* datetime */}
+                <div className="">
+                  <h1 className=" font-semibold capitalize text-center text-s4 md:text-s5 text-mblue-text">
+                    Wednesday, oct 21
+                  </h1>
                 </div>
               </div>
-              {/* datetime */}
-              <div className="">
-                <h1 className=" font-semibold capitalize text-center text-s4 text-mblue-text">
-                  Wednesday, oct 21
-                </h1>
-              </div>
             </div>
+            {/* Wether End */}
           </div>
-          {/* Wether End */}
         </div>
         {/* Main  */}
-        <div className=" h-full rounded-tl-[2rem] rounded-tr-[2rem] bg-[#FAFAFA] p-4">
-          {/* :TODO: Add Conditional Rendering */}
+        <div className=" h-full rounded-tl-[2rem] rounded-tr-[2rem] bg-[#FAFAFA] py-4 px-3">
           {!weatherData && (
             <div className=" text-s2 text-center font-medium my-12">
               <p>No Data Available</p>
@@ -292,6 +351,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
         </div> */}
         {/* Scroll Testing End */}
       </div>
+
       {/* ----- */}
       <div className=" hidden lg:block">
         {/*--------------  SideBar --------- */}
@@ -345,9 +405,9 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                       handleSetLocation(event);
                     }
                   }}></input>
-                {location ? location : "O"}
+                {location ? location : ""}
 
-                <div className="flex justify-end pr-4">
+                {/* <div className="flex justify-end pr-4">
                   <button
                     type="submit"
                     class="">
@@ -372,47 +432,62 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                   <div className=" w-6 h-6 rounded-full font-bold text-xs text-center dark:bg-[#818181] bg-[#9D9D9D] text-[#F1F1F1] cursor-pointer">
                     <h1 className="">EV</h1>
                   </div>
-                </div>
+                </div> */}
               </div>
             </form>
 
             {/* SEARCH BAR END */}
-            <div>
+
+            {/* Content */}
+
+            {/* static data */}
+            {!weatherData && <div className=" h-screen"> Details </div>}
+
+            {/* dynamic data */}
+            {weatherData && (
               <div>
-                {" "}
-                <Lottie
-                  animationData={weather.day.overcast}
-                  style={{ width: "17rem" }}
-                />
+                <div>
+                  <div>
+                    {" "}
+                    <Lottie
+                      animationData={weather.day.overcast}
+                      style={{ width: "17rem" }}
+                    />
+                  </div>
+                  <h1 className="font-meduim text-s12  -mt-12 ml-2">
+                    67&deg;<sup className="text-[4.0rem] font-medium">C</sup>
+                  </h1>
+                  <p className=" text-s4 ml-2 font-plus-jakartar font-medium">
+                    {formattedDate ? formattedDate : "Monday"},
+                    <span className=" text-gray-400">
+                      {formattedTime ? formattedTime : "16:00"}
+                    </span>
+                  </p>
+                </div>
+                <div className=" w-full h-[0.05rem] bg-[#F2F2F2] mt-4"></div>
+                <div className="mt-7 mb-4 font-medium text-s1">
+                  <div className="mb-3">Mostly Cloudy</div>
+                  <div>Rain 30%</div>
+                </div>
+                <div className="pb-6">
+                  {/* Image Div */}
+                  <div className="h-[7.6875rem] w-[19rem]">
+                    <img
+                      src="https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGlzb21ldHJpYyUyMGFic3RyYWN0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+                      className="w-full h-full object-cover  rounded-lg opacity-75"></img>
+                    <h1 className=" font-semibold text-lg text-white text-center -translate-y-[4.3rem]">
+                      {/* Might use set timeout fucntion for this typewriter thing */}
+                      {/* TODO: */}
+
+                      {/* {weatherData && (
+                        <TypeWriterContainer location={locationData} />
+                      )} */}
+                    </h1>
+                  </div>
+                </div>
               </div>
-              <h1 className="font-meduim text-s12 font-plus-jakartar -mt-12 ml-2">
-                67&deg;<sup className="text-[4.0rem] font-medium">C</sup>
-              </h1>
-              <p className=" text-s4 ml-2 font-plus-jakartar font-medium">
-                {formattedDate ? formattedDate : "Monday"},
-                <span className=" text-gray-400">
-                  {formattedTime ? formattedTime : "16:00"}
-                </span>
-              </p>
-            </div>
-            <div className=" w-full h-[0.05rem] bg-[#F2F2F2] mt-4"></div>
-            <div className="mt-7 mb-4 font-medium text-s1">
-              <div className="mb-3">Mostly Cloudy</div>
-              <div>Rain 30%</div>
-            </div>
-            <div className="pb-6">
-              {/* Image Div */}
-              <div className="h-[7.6875rem] w-[19rem]">
-                <img
-                  src="https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGlzb21ldHJpYyUyMGFic3RyYWN0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                  className="w-full h-full object-cover  rounded-lg opacity-75"></img>
-                <h1 className=" font-semibold text-lg text-white text-center -translate-y-[4.3rem]">
-                  {/* Might use set timeout fucntion for this typewriter thing */}
-                  {/* TODO: */}
-                  {/* {location && <TypeWriterContainer location={locationData} />} */}
-                </h1>
-              </div>
-            </div>
+            )}
+            {/* Content End */}
           </div>
           {/* SideBar End */}
         </aside>
@@ -426,6 +501,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
               Accept Location access or enter a location
             </div>
           )}
+          <div></div>
           {weatherData && (
             <Tab
               data={[

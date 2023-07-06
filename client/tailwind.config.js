@@ -20,6 +20,7 @@ export default {
         s9: "5.062rem",
         s12: "6.56rem",
         s13: "7.56rem",
+        s14: "8.56rem",
       },
 
       colors: {
@@ -41,12 +42,16 @@ export default {
         mm: "#1F3B55",
         mt: "#2A2C38",
         "mb-white": "#F9FBFB",
+        blue07: "rgba(141, 170, 197, 0.5)",
+        black09: "#414344",
+        black08: "#6E7577",
       },
       width: {
         sidebar: "23.9375rem",
       },
       borderRadius: {
         xc: "0.8rem",
+        mb: "1.8rem",
       },
       gradientColorStopPositions: {
         33: "33%",

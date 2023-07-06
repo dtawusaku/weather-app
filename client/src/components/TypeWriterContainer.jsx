@@ -1,14 +1,24 @@
 import React from "react";
+import Typewriter from "typewriter-effect";
 
-export default function TypeWriterContainer(locationData) {
-  console.log(locationData);
+export default function TypeWriterContainer({ location }) {
+  console.log(location);
   return (
     <div>
       {" "}
       <Typewriter
         options={{
-          strings: "Location Name",
-
+          strings: `${
+            location
+              ? location.state
+                ? location.name +
+                  ", " +
+                  location.state +
+                  ", " +
+                  location.country
+                : location.name + "," + location.country
+              : "Hi there"
+          }`,
           autoStart: true,
           loop: false,
           //   delay: 1175,
