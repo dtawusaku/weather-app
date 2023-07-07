@@ -7,7 +7,6 @@ import Today from "./components/Today";
 import Week from "./components/Week";
 import { format } from "date-fns"; //For Date formatting
 import "./scripts/script";
-
 import functions from "./scripts/functions";
 import TypeWriterContainer from "./components/TypeWriterContainer";
 
@@ -88,7 +87,8 @@ function App() {
   //TODO: Add temperature degree as dependencies
   useEffect(() => {
     if (location) {
-      fetch(`http://localhost:3000?location=${location}`)
+      // fetch(`http://localhost:3000?location=${location}`) // Dev
+      fetch(`http://3.75.158.163?location=${location}`) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);
@@ -96,7 +96,8 @@ function App() {
         });
     } else if (userLocation) {
       const { lat, lon } = userLocation;
-      fetch(`http://localhost:3000?&lat=${lat}&lon=${lon}`)
+      // fetch(`http://localhost:3000?&lat=${lat}&lon=${lon}`) //Dev
+      fetch(`http://3.75.158.163?&lat=${lat}&lon=${lon}`) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);
@@ -159,26 +160,8 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
     <>
       <div className=" bg-[#BED7F3] lg:hidden container relative h-full dark:bg-mblue-dark transition-all">
         <div className=" bg-mblue dark:bg-mblue-dark mscreen transition-all">
-          {/* Theme button */}
-          <div
-            className=" bg-gray-400 mt-2 inline-block rounded-full py-1 px-1 text-white dark:text-black dark:bg-slate-200 relative left-3/4 ml-14"
-            onClick={handleThemeSwitch}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-5 h-5">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-              />
-            </svg>
-          </div>
           {/* Search input */}
-          <div className=" mt-2 mx-6">
+          <div className=" mt-16 mx-6">
             <div className="relative">
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
@@ -199,31 +182,55 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
               <input
                 type="search"
                 id="default-search"
-                class="block w-full py-2.5 pl-10 rounded-full text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search for a city, country or state"></input>
-              <div className=" flex">
-                <div class="text-white w-8 h-8 rounded-full absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  NG
-                </div>
-              </div>
+                class="block w-full py-2.5 pl-10 pr-5 rounded-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white "
+                placeholder="Search for a city, country or state"
+                onKeyDown={(event) => {
+                  if (event.code == "Enter") {
+                    handleSetLocation(event);
+                  }
+                }}></input>
             </div>
           </div>
           {/* Searh cinput end */}
+          {/* Theme button */}
+          <div
+            className="mt-2 inline-block rounded-full py-1 px-1 border-2 border-bluegradient text-bluegradient dark:text-black relative left-3/4 ml-14"
+            onClick={handleThemeSwitch}>
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5">
+              <path
+                d="M11 16C9.61667 16 8.43733 15.5123 7.462 14.537C6.48667 13.5617 5.99933 12.3827 6 11C6 9.61667 6.48767 8.43733 7.463 7.462C8.43833 6.48667 9.61733 5.99933 11 6C12.3833 6 13.5627 6.48767 14.538 7.463C15.5133 8.43833 16.0007 9.61733 16 11C16 12.3833 15.5123 13.5627 14.537 14.538C13.5617 15.5133 12.3827 16.0007 11 16ZM0 12V10H4V12H0ZM18 12V10H22V12H18ZM10 4V0H12V4H10ZM10 22V18H12V22H10ZM5.35 6.75L2.875 4.275L4.275 2.875L6.75 5.35L5.35 6.75ZM17.725 19.125L15.25 16.65L16.65 15.25L19.125 17.725L17.725 19.125ZM16.65 6.75L15.25 5.35L17.725 2.875L19.125 4.275L16.65 6.75ZM4.275 19.125L2.875 17.725L5.35 15.25L6.75 16.65L4.275 19.125Z"
+                fill="#296399"
+              />
+            </svg>
+          </div>
           {/* Monkey no see */}
           {!weatherData && (
-            <div
-              className=" mt-40 "
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}>
-              <div>
-                {" "}
-                <Lottie
-                  animationData={monkey}
-                  style={{ width: "10rem" }}
-                />
+            <div>
+              <div className=" text-center mt-[10rem]">
+                <h1 className=" dark:text-white font-semibold text-dark-white text-s3">
+                  Enter Location
+                </h1>
+              </div>
+              <div
+                className=" mt-4 "
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}>
+                <div>
+                  {" "}
+                  <Lottie
+                    animationData={monkey}
+                    style={{ width: "6rem" }}
+                  />
+                </div>
               </div>
             </div>
           )}
@@ -231,7 +238,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
           {/* Weather Details */}
           {weatherData && (
             <div>
-              <div className=" flex-row mt-10">
+              <div className=" flex-row mt-[6rem]">
                 {/* location */}
                 <div>
                   {" "}
@@ -243,7 +250,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                 <div className="flex-row md:-mt-2">
                   <div>
                     {" "}
-                    <h1 className=" font-bold text-s9 md:text-s12 text-center bg-clip-text text-transparent bg-gradient-to-b from-bluegradient from-50% to-white to-90% dark:bg-gradient-to-b dark:from-white dark:from-50%  dark:to-bluegradient dark:to-90%">
+                    <h1 className=" font-bold text-s9 md:text-s12 ml-6 text-center bg-clip-text text-transparent bg-gradient-to-b from-bluegradient from-50% to-white to-90% dark:bg-gradient-to-b dark:from-white dark:from-50%  dark:to-bluegradient dark:to-90%">
                       {
                         functions.todayDataLogicHandling(
                           weatherData.list.slice(0, 1)[0]
@@ -254,7 +261,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                   </div>
                   <div className=" md:hidden">
                     <div
-                      className=" -mt-24 -mb-16"
+                      className=" -mt-20 -mb-6"
                       style={{
                         display: "flex",
                         justifyContent: "center",
@@ -275,7 +282,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                   </div>
                   <div className=" hidden md:block">
                     <div
-                      className=" -mt-28 -mb-16"
+                      className=" -mt-24 -mb-8"
                       style={{
                         display: "flex",
                         justifyContent: "center",
@@ -331,7 +338,12 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                   component: (
                     <Today
                       data={{
-                        main: weatherData.list.slice(0, 3),
+                        main: weatherData.list.slice(
+                          0,
+                          functions.sliceDeterminerByHour(
+                            weatherData.list[0].dt_txt
+                          )
+                        ),
                         sunrise: weatherData.city.sunrise,
                         sunset: weatherData.city.sunset,
                         timezone: weatherData.city.timezone,
@@ -459,7 +471,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
 
             {/* dynamic data */}
             {weatherData && (
-              <div>
+              <div className="h-screen">
                 <div>
                   <div>
                     {" "}

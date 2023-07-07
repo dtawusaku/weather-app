@@ -7,7 +7,7 @@ function selectLottieByDescriptionDay(description) {
   switch (description) {
     //Rain
     case "light rain":
-      return clouds.others.rain;
+      return clouds.day["partlycloudy-rain"];
       break;
     case "moderate rain":
       return clouds.others.rain;
@@ -45,7 +45,7 @@ function selectLottieByDescriptionNight(description) {
   switch (description) {
     //Rain
     case "light rain":
-      return clouds.others.rain;
+      return clouds.night["partlycloudy-rain"];
       break;
     case "moderate rain":
       return clouds.others.rain;

@@ -115,18 +115,18 @@ export default function Today({ data }) {
             </div>
           </div>
           <div>
-            <h1 className="  text-black09 lg:text-white-dark lg:dark:text-white text-s6 font-semibold lg:text-s7 lg:font-medium">
+            <h1 className="  text-black09 lg:text-white-dark lg:dark:text-white text-s6 font-semibold md:text-s6.5 lg:text-s7 lg:font-medium">
               {data.main[0].wind.speed ? data.main[0].wind.speed : " __ "}
-              <small className="text-s2 lg:text-s4">km/h</small>{" "}
+              <small className="text-s2 md:text-s3 lg:text-s4">km/h</small>{" "}
             </h1>
           </div>
           <div className=" flex">
-            <div className=" lg:h-8 lg:w-8 w-6 h-6 rounded-full border-2 border-my-gray content-center mr-2">
+            <div className=" md:h-7 md:w-7 lg:h-8 lg:w-8 w-6 h-6 rounded-full border-2 border-my-gray content-center mr-2">
               <svg
                 width="41"
                 height="41"
                 viewBox="0 0 41 41"
-                className="lg:h-8 lg:w-8 w-6 h-6 -translate-x-0.5 -translate-y-0.5"
+                className="md:h-7 md:w-7 lg:h-8 lg:w-8 w-6 h-6 -translate-x-0.5 -translate-y-0.5"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_326_8)">
@@ -147,7 +147,7 @@ export default function Today({ data }) {
                 </defs>
               </svg>
             </div>
-            <h1 className="lg:text-s2 font-bold lg:mt-1 lg:-translate-y-0.5">
+            <h1 className="md:text-s1 lg:text-s2 font-bold lg:mt-1 lg:-translate-y-0.5">
               {data.main[0].wind.speed
                 ? functions.getWindDirection(data.main[0].wind.speed)
                 : " __ "}
@@ -160,7 +160,7 @@ export default function Today({ data }) {
         <div className="  lg:text-left  w-[10.7rem]  h-[9.9rem]  md:w-[16.1rem]  md:h-[12.9rem]   lg:w-[16.3125rem] lg:h-[14.0625rem]  lg:bg-white lg:dark:bg-white-dark border-2 border-blue07 lg:border-0 flex flex-col  rounded-mb lg:rounded-xc lg:pl-8 lg:pr-4 lg:pt-5 lg:pb-4 justify-between pl-5  py-4">
           <div className="">
             <div className="flex justify-between">
-              <h1 className=" font-normal lg:font-meduim text-black08 lg:text-my-gray lg:dark:text-my-gray-dark text-sm lg:text-s2 dark:font-semibold">
+              <h1 className=" font-normal lg:font-meduim text-black08 lg:text-my-gray lg:dark:text-my-gray-dark text-sm md:text-s1 lg:text-s2 dark:font-semibold">
                 Sunrise and Sunset
               </h1>
               <div
@@ -261,7 +261,7 @@ export default function Today({ data }) {
             </div>
           </div>
           <div>
-            <p className=" text-black09 lg:text-white-dark lg:dark:text-white text-s6 font-semibold lg:text-s7 lg:font-medium">
+            <p className=" text-black09 lg:text-white-dark lg:dark:text-white text-s6 font-semibold md:text-s6.5 lg:text-s7 lg:font-medium">
               {data.main[0].main.humidity ? data.main[0].main.humidity : "00"}{" "}
               <sup className="text-s3">%</sup>{" "}
             </p>
@@ -278,7 +278,7 @@ export default function Today({ data }) {
                   animationData={functions.humiditylottie(
                     functions.humidityCheck(data.main[0].main.humidity)
                   )}
-                  loop={false}
+                  loop={true}
                   autoplay={true}
                   style={{ width: "1.5rem", transform: "translateY(0.2rem)" }}
                 />
@@ -319,7 +319,7 @@ export default function Today({ data }) {
             </div>
           </div>
           <div>
-            <p className="  text-black09 lg:text-white-dark lg:dark:text-white text-s6 lg:text-s7 font-semibold lg:font-medium">
+            <p className="  text-black09 lg:text-white-dark lg:dark:text-white text-s6 md:text-s6.5 lg:text-s7 font-semibold lg:font-medium">
               {data.main[0].visibility
                 ? functions.metersToKilometers(data.main[0].visibility)
                 : "00"}{" "}
@@ -377,7 +377,7 @@ export default function Today({ data }) {
             </div>
           </div>
           <div>
-            <p className="  text-black09 lg:text-white-dark lg:dark:text-white lg:text-s7 lg:font-medium font-semibold text-s6">
+            <p className="  text-black09 lg:text-white-dark lg:dark:text-white md:text-s6.5 lg:text-s7 lg:font-medium font-semibold text-s6">
               {data.main[0].main.pressure ? data.main[0].main.pressure : "10"}{" "}
               <small className="lg:text-s4 text-s3">hPa</small>{" "}
             </p>

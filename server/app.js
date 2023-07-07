@@ -42,7 +42,7 @@ app.get("/", function (req, res) {
         weatherData = response.data;
         // console.log(latitude,longitude);
         // res.json(geolocationData);
-        // console.log(weatherData,geolocationData);
+        // console.log(weatherData);
         res.json({
           weather: weatherData,
           location: geolocationData,

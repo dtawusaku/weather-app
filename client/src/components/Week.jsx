@@ -22,7 +22,7 @@ export default function Week() {
           <h1 className=" font-semibold text-s4">Week's Highlights</h1>{" "}
         </div>
       </div>
-      <div className=" grid grid-cols-3 gap-6">
+      <div className=" grid grid-cols-1 lg:grid-cols-3 lg:gap-6">
         {/* Condition Box */}
         <div className=" w-[18.3125rem] h-[16.0625rem] bg-white dark:bg-white-dark flex flex-col rounded-xc">
           <div className="">

@@ -35,14 +35,14 @@ export default function Tab({ data }) {
         </div>
         <div className="hidden lg:block">
           {/* Degree Temperature */}
-          <input
+          {/* <input
             type="radio"
             id="celsuis"
             name="degree"></input>
           <input
             type="radio"
             id="fahrenheit"
-            name="degree"></input>
+            name="degree"></input> */}
           <div className="flex">
             <div className="flex pt-1.5 mr-4">
               {/* celsuis button */}
@@ -66,13 +66,15 @@ export default function Tab({ data }) {
                 </div>
               </div>
             </div>
-            <motion.div
-              initial={{}}
-              animate={{}}
-              variants={{}}
-              className="w-12 h-12 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 flex items-center justify-center font-bold text-white dark:bg-gradient-to-r dark:from-[#165E7F] dark:to-[#272BC7]">
-              DT
-            </motion.div>
+            <a href="https://github.com/dtawusaku">
+              <motion.div
+                initial={{}}
+                animate={{}}
+                variants={{}}
+                className="w-12 h-12 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 flex items-center justify-center font-bold text-white dark:bg-gradient-to-r dark:from-[#165E7F] dark:to-[#272BC7]">
+                DT
+              </motion.div>
+            </a>
           </div>
           {/* Degree Temperature End */}
         </div>

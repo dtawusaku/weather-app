@@ -16,7 +16,7 @@
 }
 .weather-box:hover {
   transform: rotateY(180deg);
-  background-color: #8a2be2;
+  /* background-color: #8a2be2; */
 }
 
 .weather-box1 {
