@@ -88,7 +88,7 @@ function App() {
   useEffect(() => {
     if (location) {
       // fetch(`http://localhost:3000?location=${location}`) // Dev
-      fetch(`http://3.75.158.163?location=${location}`) //Prod
+      fetch(`http://3.75.158.163/api/weather?location=${location}`) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);

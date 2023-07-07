@@ -8,7 +8,7 @@ const app = express();
 dotenv.config(); //dot env things
 app.use(cors());
 
-app.get("/api/", function (req, res) {
+app.get("/api/weather", function (req, res) {
   let location = req.query.location;
   let userLocationLatitude = req.query.lat;
   let userLocationLongitude = req.query.lon;
