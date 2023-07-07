@@ -88,7 +88,9 @@ function App() {
   useEffect(() => {
     if (location) {
       // fetch(`http://localhost:3000?location=${location}`) // Dev
-      fetch(`http://3.75.158.163/api/weather?location=${location}`) //Prod
+      fetch(
+        `https://weather-app-backend-czwq.onrender.com/api/weather?location=${location}`
+      ) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);
@@ -97,7 +99,9 @@ function App() {
     } else if (userLocation) {
       const { lat, lon } = userLocation;
       // fetch(`http://localhost:3000?&lat=${lat}&lon=${lon}`) //Dev
-      fetch(`http://3.75.158.163?&lat=${lat}&lon=${lon}`) //Prod
+      fetch(
+        `https://weather-app-backend-czwq.onrender.com/api/weather?&lat=${lat}&lon=${lon}`
+      ) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);
