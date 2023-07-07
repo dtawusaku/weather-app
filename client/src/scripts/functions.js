@@ -84,8 +84,10 @@ function todayDataLogicHandling(weatherobject) {
   //Values
   const dateTimeString = weatherobject.dt_txt;
   const description = weatherobject.weather[0].description;
+  const icon = weatherobject.weather[0].icon;
   const temperature = weatherobject.main.temp;
   const visibility = weatherobject.visibility;
+  const pressure = weatherobject.main.pressure;
   let lottie = null;
 
   //Format Date and Time
@@ -117,6 +119,8 @@ function todayDataLogicHandling(weatherobject) {
     lottie: lottie,
     temp: temperature,
     visibility: visibility,
+    pressure: pressure,
+    icon: icon,
   };
 
   return data;
@@ -141,8 +145,31 @@ function weekDataLogicHandling() {
 }
 
 //TODO: Complete this!
-function airPressureCheck() {}
-function airpressurelottie() {}
+function airPressureCheck(value) {
+  if (value < 1000) {
+    return "Low";
+  } else if (value > 1010) {
+    return "Normal";
+  } else if (value > 1016) {
+    return "High";
+  }
+}
+function airpressurelottie(airPressureComment) {
+  switch (airPressureComment) {
+    case "Low":
+      return emojis.thumbsdown;
+      break;
+    case "Normal":
+      return emojis.thumbsup;
+      break;
+    case "High":
+      return emojis.weary;
+      break;
+    default:
+      return { message: "Error occured" };
+      break;
+  }
+}
 
 function humidityCheck(value) {
   if (value < 30) {
@@ -150,7 +177,7 @@ function humidityCheck(value) {
   } else if ((value >= 30) & (value < 70)) {
     return "Normal";
   } else {
-    return "So Moist";
+    return "Muggy";
   }
 }
 function humiditylottie(humiditycomment) {
@@ -161,7 +188,7 @@ function humiditylottie(humiditycomment) {
     case "Normal":
       return emojis.thumbsup;
       break;
-    case "So Moist":
+    case "Muggy":
       return emojis.weary;
       break;
     default:

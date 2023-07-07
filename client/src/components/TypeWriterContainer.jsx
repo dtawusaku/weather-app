@@ -2,9 +2,9 @@ import React from "react";
 import Typewriter from "typewriter-effect";
 
 export default function TypeWriterContainer({ location }) {
-  console.log(location);
+  // console.log(location);
   return (
-    <div>
+    <div className=" container overflow-hidden px-4">
       {" "}
       <Typewriter
         options={{

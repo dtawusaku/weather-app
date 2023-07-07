@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import monkey from "../src/assets/lotties/emojis/monkeynosee.json";
-import weather from "./scripts/clouds";
 import "./custom.css";
 import Tab from "./components/Tab";
 import Today from "./components/Today";
 import Week from "./components/Week";
 import { format } from "date-fns"; //For Date formatting
 import "./scripts/script";
+
 import functions from "./scripts/functions";
 import TypeWriterContainer from "./components/TypeWriterContainer";
 
@@ -32,7 +32,7 @@ function App() {
         lat: position.coords.latitude,
         lon: position.coords.longitude,
       });
-      console.log(userLocation);
+      // console.log(userLocation); //Output location
     };
 
     const errorCallback = (error) => {
@@ -48,7 +48,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(userLocation);
+    // console.log(userLocation);
   }, [userLocation]);
 
   /*
@@ -117,8 +117,7 @@ function App() {
   // console.log(locationData);
   // console.log(weatherData);
 
-  const dateTimeString = "2023-06-14 21:00:00";
-  const dateTime = new Date(dateTimeString);
+  const dateTime = new Date();
 
   const formattedDate = format(dateTime, "EEEE");
   const formattedTime = format(dateTime, "HH:mm");
@@ -210,87 +209,109 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
             </div>
           </div>
           {/* Searh cinput end */}
-          {/* :TODO: Add Conditional rendering */}
           {/* Monkey no see */}
-          {/* <div
-            className=" mt-40 "
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}>
-            <div>
-              {" "}
-              <Lottie
-                animationData={monkey}
-                style={{ width: "10rem" }}
-              />
-            </div>
-          </div> */}
-          {/* Monkey no see */}
-          <div className="">
-            {/* Weather */}
-            <div className=" flex-row mt-10">
-              {/* location */}
+          {!weatherData && (
+            <div
+              className=" mt-40 "
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}>
               <div>
                 {" "}
-                <h1 className=" font-bold capitalize text-s4 md:text-s5 text-center text-mblue-text ">
-                  Los Angelos
-                </h1>
+                <Lottie
+                  animationData={monkey}
+                  style={{ width: "10rem" }}
+                />
               </div>
-              {/* Wether */}
-              <div className="flex-row md:-mt-2">
+            </div>
+          )}
+          {/* Monkey no see */}
+          {/* Weather Details */}
+          {weatherData && (
+            <div>
+              <div className=" flex-row mt-10">
+                {/* location */}
                 <div>
                   {" "}
-                  <h1 className=" font-bold text-s12 md:text-s14 text-center bg-clip-text text-transparent bg-gradient-to-b from-bluegradient from-50% to-white to-90% dark:bg-gradient-to-b dark:from-white dark:from-50%  dark:to-bluegradient dark:to-90%">
-                    35
-                    <sup className=" text-s8 text-mblue-textdeg">&deg;</sup>
+                  <h1 className=" font-bold capitalize text-s4 md:text-s5 text-center text-mblue-text ">
+                    {locationData.name}
                   </h1>
                 </div>
-                <div className=" md:hidden">
-                  <div
-                    className=" -mt-24 -mb-16"
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}>
-                    <div>
-                      {" "}
-                      <Lottie
-                        animationData={weather.day.overcast}
-                        style={{ width: "17rem" }}
-                      />
+                {/* Wether */}
+                <div className="flex-row md:-mt-2">
+                  <div>
+                    {" "}
+                    <h1 className=" font-bold text-s9 md:text-s12 text-center bg-clip-text text-transparent bg-gradient-to-b from-bluegradient from-50% to-white to-90% dark:bg-gradient-to-b dark:from-white dark:from-50%  dark:to-bluegradient dark:to-90%">
+                      {
+                        functions.todayDataLogicHandling(
+                          weatherData.list.slice(0, 1)[0]
+                        ).temp
+                      }
+                      <sup className=" text-s8 text-mblue-textdeg">&deg;</sup>
+                    </h1>
+                  </div>
+                  <div className=" md:hidden">
+                    <div
+                      className=" -mt-24 -mb-16"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}>
+                      <div>
+                        {" "}
+                        <Lottie
+                          animationData={
+                            functions.todayDataLogicHandling(
+                              weatherData.list.slice(0, 1)[0]
+                            ).lottie
+                          }
+                          style={{ width: "17rem" }}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className=" hidden md:block">
-                  <div
-                    className=" -mt-28 -mb-16"
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}>
-                    <div>
-                      {" "}
-                      <Lottie
-                        animationData={weather.day.overcast}
-                        style={{ width: "20rem" }}
-                      />
+                  <div className=" hidden md:block">
+                    <div
+                      className=" -mt-28 -mb-16"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}>
+                      <div>
+                        {" "}
+                        <Lottie
+                          animationData={
+                            functions.todayDataLogicHandling(
+                              weatherData.list.slice(0, 1)[0]
+                            ).lottie
+                          }
+                          style={{ width: "20rem" }}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                {/* datetime */}
-                <div className="">
-                  <h1 className=" font-semibold capitalize text-center text-s4 md:text-s5 text-mblue-text">
-                    Wednesday, oct 21
-                  </h1>
+                  {/* datetime */}
+                  <div className="">
+                    <h1 className=" font-semibold capitalize text-center text-s4 md:text-s5 text-mblue-text">
+                      {formattedDate},{" "}
+                      <span>
+                        {
+                          functions.todayDataLogicHandling(
+                            weatherData.list.slice(0, 1)[0]
+                          ).time
+                        }
+                      </span>
+                    </h1>
+                  </div>
                 </div>
               </div>
             </div>
-            {/* Wether End */}
-          </div>
+          )}
+          {/* Wether End */}
         </div>
         {/* Main  */}
         <div className=" h-full rounded-tl-[2rem] rounded-tr-[2rem] bg-[#FAFAFA] py-4 px-3">
@@ -310,12 +331,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                   component: (
                     <Today
                       data={{
-                        main: weatherData.list.slice(
-                          0,
-                          functions.sliceDeterminerByHour(
-                            weatherData.list[0].dt_txt
-                          )
-                        ),
+                        main: weatherData.list.slice(0, 3),
                         sunrise: weatherData.city.sunrise,
                         sunset: weatherData.city.sunset,
                         timezone: weatherData.city.timezone,
@@ -330,7 +346,6 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
         </div>
         {/* Main End */}
 
-        <div className="block h-[70rem] ">Thord Div</div>
         {/* Scroll Testing */}
         {/* <div class="container">
           <div
@@ -405,7 +420,6 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                       handleSetLocation(event);
                     }
                   }}></input>
-                {location ? location : ""}
 
                 {/* <div className="flex justify-end pr-4">
                   <button
@@ -450,24 +464,52 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                   <div>
                     {" "}
                     <Lottie
-                      animationData={weather.day.overcast}
+                      animationData={
+                        functions.todayDataLogicHandling(
+                          weatherData.list.slice(0, 1)[0]
+                        ).lottie
+                      }
                       style={{ width: "17rem" }}
                     />
                   </div>
-                  <h1 className="font-meduim text-s12  -mt-12 ml-2">
-                    67&deg;<sup className="text-[4.0rem] font-medium">C</sup>
+                  <h1 className="font-meduim text-s11  -mt-12 ml-2">
+                    {
+                      functions.todayDataLogicHandling(
+                        weatherData.list.slice(0, 1)[0]
+                      ).temp
+                    }
+                    &deg;<sup className="text-[2.5rem] font-medium">C</sup>
                   </h1>
                   <p className=" text-s4 ml-2 font-plus-jakartar font-medium">
-                    {formattedDate ? formattedDate : "Monday"},
+                    {formattedDate ? formattedDate : "Monday"} ,&nbsp;
                     <span className=" text-gray-400">
-                      {formattedTime ? formattedTime : "16:00"}
+                      {
+                        functions.todayDataLogicHandling(
+                          weatherData.list.slice(0, 1)[0]
+                        ).time
+                      }
                     </span>
                   </p>
                 </div>
                 <div className=" w-full h-[0.05rem] bg-[#F2F2F2] mt-4"></div>
                 <div className="mt-7 mb-4 font-medium text-s1">
-                  <div className="mb-3">Mostly Cloudy</div>
-                  <div>Rain 30%</div>
+                  <div className="mb-3 capitalize">
+                    {" "}
+                    {
+                      functions.todayDataLogicHandling(
+                        weatherData.list.slice(0, 1)[0]
+                      ).description
+                    }
+                  </div>
+                  <div>
+                    {/* <i className="fa-brands fa-youtube" /> */}
+                    {
+                      functions.todayDataLogicHandling(
+                        weatherData.list.slice(0, 1)[0]
+                      ).icon
+                    }
+                    Rain 30%
+                  </div>
                 </div>
                 <div className="pb-6">
                   {/* Image Div */}
@@ -476,12 +518,9 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                       src="https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGlzb21ldHJpYyUyMGFic3RyYWN0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
                       className="w-full h-full object-cover  rounded-lg opacity-75"></img>
                     <h1 className=" font-semibold text-lg text-white text-center -translate-y-[4.3rem]">
-                      {/* Might use set timeout fucntion for this typewriter thing */}
-                      {/* TODO: */}
-
-                      {/* {weatherData && (
+                      {weatherData && (
                         <TypeWriterContainer location={locationData} />
-                      )} */}
+                      )}
                     </h1>
                   </div>
                 </div>
@@ -501,7 +540,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
               Accept Location access or enter a location
             </div>
           )}
-          <div></div>
+
           {weatherData && (
             <Tab
               data={[
