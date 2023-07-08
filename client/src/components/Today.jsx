@@ -25,7 +25,7 @@ export default function Today({ data }) {
       transition={{ duration: 0.2 }}
       exit={{ x: 300, opacity: 0 }}>
       {/* :TODO: ADD SLIDER  FOR TABLETS AND SMALLERS SCREENS*/}
-      <div className="mt-7 mb-10 md:my-14 lg:my-[4.125rem] flex gap-4 w-full">
+      <div className="mt-7 mb-10 md:my-14 lg:my-[4.125rem] flex gap-4 w-full overflow-y-hidden">
         {data.main.map((data) => (
           <WeatherBox data={functions.todayDataLogicHandling(data)} />
         ))}
@@ -323,7 +323,7 @@ export default function Today({ data }) {
               {data.main[0].visibility
                 ? functions.metersToKilometers(data.main[0].visibility)
                 : "00"}{" "}
-              <small className="text-s4 lg:text-s5">km</small>{" "}
+              <small className="text-s3 lg:text-s5">km</small>{" "}
             </p>
           </div>
           <div className=" flex">

@@ -86,6 +86,8 @@ function todayDataLogicHandling(weatherobject) {
   const description = weatherobject.weather[0].description;
   const icon = weatherobject.weather[0].icon;
   const temperature = weatherobject.main.temp;
+  const humidity = weatherobject.main.humidity;
+  const windspeed = weatherobject.wind.speed;
   const visibility = weatherobject.visibility;
   const pressure = weatherobject.main.pressure;
   let lottie = null;
@@ -93,7 +95,8 @@ function todayDataLogicHandling(weatherobject) {
   //Format Date and Time
   const dateTime = new Date(dateTimeString);
   const hours = dateTime.getHours(); ///Get hours value
-  const formattedTime = format(dateTime, "HH:mm");
+  const formattedTime = format(dateTime, "HH:mm"); // Time - 16:34
+  const weekDayShort = format(dateTime, "EEE"); // Sun
 
   //Handle Lottie Data by description
   const day_lottie = selectLottieByDescriptionDay(description);
@@ -114,11 +117,14 @@ function todayDataLogicHandling(weatherobject) {
   }
 
   const data = {
+    day: weekDayShort,
     time: formattedTime,
     description: description,
     lottie: lottie,
     temp: temperature,
     visibility: visibility,
+    humidity: humidity,
+    windspeed: windspeed,
     pressure: pressure,
     icon: icon,
   };
@@ -136,13 +142,7 @@ function todayhightlightslogic(obj) {
   const sunset = sunsetTime.toLocaleTimeString();
 }
 
-function weekDataLogicHandling() {
-  //Format Date and Time
-  const dateTimeString = weatherobject.dt_txt;
-  const dateTime = new Date(dateTimeString);
-  const formattedDate = format(dateTime, "EEEE");
-  const formattedTime = format(dateTime, "HH:mm");
-}
+function weekDataLogicHandling(weatherobject) {}
 
 function airPressureCheck(value) {
   if (value > 0 && value <= 1009) {
@@ -197,7 +197,8 @@ function humiditylottie(humiditycomment) {
 }
 
 function metersToKilometers(meters) {
-  return meters / 1000;
+  const km = meters / 1000;
+  return km.toFixed(1); // returns in one decimal place.
 }
 
 function visibilityCheck(value) {

@@ -111,7 +111,7 @@ function App() {
   }, [location, userLocation]);
 
   const dateTime = new Date();
-  const formattedDate = format(dateTime, "EEEE");
+  const formattedDate = format(dateTime, "EEEE, HH:mm"); // Saturday, 16:23
   const formattedTime = format(dateTime, "HH:mm");
 
   /*
@@ -193,7 +193,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
           {theme && (
             <div
               onClick={handleThemeSwitch}
-              className=" absolute left-[19.9rem] top-[8rem]">
+              className=" absolute left-[19.9rem] top-[8rem] md:left-[41rem] md:top-[8rem]">
               <ThemeButton theme={theme} />
             </div>
           )}
@@ -294,14 +294,11 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                   {/* datetime */}
                   <div className="">
                     <h1 className=" font-semibold capitalize text-center text-s4 md:text-s5 text-mblue-text">
-                      {formattedDate},{" "}
-                      <span>
-                        {
-                          functions.todayDataLogicHandling(
-                            weatherData.list.slice(0, 1)[0]
-                          ).time
-                        }
-                      </span>
+                      {
+                        functions.todayDataLogicHandling(
+                          weatherData.list.slice(0, 1)[0]
+                        ).description
+                      }
                     </h1>
                   </div>
                 </div>
@@ -342,7 +339,10 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                     />
                   ),
                 },
-                { name: "Week", component: <Week /> },
+                {
+                  name: "Week",
+                  component: <Week data={weatherData.list.slice(7)} />,
+                },
               ]}
             />
           )}
@@ -485,13 +485,10 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                     &deg;<sup className="text-[2.5rem] font-medium">C</sup>
                   </h1>
                   <p className=" text-s4 ml-2 font-plus-jakartar font-medium">
-                    {formattedDate ? formattedDate : "Monday"} ,&nbsp;
+                    {formattedDate ? format(dateTime, "EEEE") : "Monday"}{" "}
+                    ,&nbsp;
                     <span className=" text-gray-400">
-                      {
-                        functions.todayDataLogicHandling(
-                          weatherData.list.slice(0, 1)[0]
-                        ).time
-                      }
+                      {format(dateTime, "HH:mm")}
                     </span>
                   </p>
                 </div>

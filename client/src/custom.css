@@ -10,14 +10,21 @@
   height: 9.8125rem;
   width: 7.625rem; /* 122px */
   position: relative;
-  background-color: white;
+  /* background-color: white;
+  transform-style: preserve-3d;
+  transition: transform 1s; */
+}
+/* .weather-box:hover {
+  transform: rotateY(180deg);
+} */
+
+/* .flip {
   transform-style: preserve-3d;
   transition: transform 1s;
 }
-.weather-box:hover {
+.flip:hover {
   transform: rotateY(180deg);
-  /* background-color: #8a2be2; */
-}
+} */
 
 .weather-box1 {
   position: absolute;
