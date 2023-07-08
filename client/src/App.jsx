@@ -9,6 +9,7 @@ import { format } from "date-fns"; //For Date formatting
 import "./scripts/script";
 import functions from "./scripts/functions";
 import TypeWriterContainer from "./components/TypeWriterContainer";
+import ThemeButton from "./components/ThemeButton";
 
 function App() {
   const [userLocation, setUserLocation] = useState(null); // User's Location
@@ -86,10 +87,10 @@ function App() {
   //TODO: Add temperature degree as dependencies
   useEffect(() => {
     if (location) {
-      fetch(`http://localhost:3000?location=${location}`) // Dev
-        // fetch(
-        //   `https://weather-app-backend-czwq.onrender.com/api/weather?location=${location}`
-        // ) //Prod
+      // fetch(`http://localhost:3000?location=${location}`) // Dev
+      fetch(
+        `https://weather-app-backend-czwq.onrender.com/api/weather?location=${location}`
+      ) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);
@@ -97,10 +98,10 @@ function App() {
         });
     } else if (userLocation) {
       const { lat, lon } = userLocation;
-      fetch(`http://localhost:3000?&lat=${lat}&lon=${lon}`) //Dev
-        // fetch(
-        //   `https://weather-app-backend-czwq.onrender.com/api/weather?&lat=${lat}&lon=${lon}`
-        // ) //Prod
+      // fetch(`http://localhost:3000?&lat=${lat}&lon=${lon}`) //Dev
+      fetch(
+        `https://weather-app-backend-czwq.onrender.com/api/weather?&lat=${lat}&lon=${lon}`
+      ) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);
@@ -187,23 +188,17 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
             </div>
           </div>
           {/* Searh cinput end */}
-          {/* Theme button */}
-          <div
-            className="mt-2 inline-block rounded-full py-1 px-1 border-2 border-bluegradient text-bluegradient dark:text-black relative left-3/4 ml-14"
-            onClick={handleThemeSwitch}>
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 22 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5">
-              <path
-                d="M11 16C9.61667 16 8.43733 15.5123 7.462 14.537C6.48667 13.5617 5.99933 12.3827 6 11C6 9.61667 6.48767 8.43733 7.463 7.462C8.43833 6.48667 9.61733 5.99933 11 6C12.3833 6 13.5627 6.48767 14.538 7.463C15.5133 8.43833 16.0007 9.61733 16 11C16 12.3833 15.5123 13.5627 14.537 14.538C13.5617 15.5133 12.3827 16.0007 11 16ZM0 12V10H4V12H0ZM18 12V10H22V12H18ZM10 4V0H12V4H10ZM10 22V18H12V22H10ZM5.35 6.75L2.875 4.275L4.275 2.875L6.75 5.35L5.35 6.75ZM17.725 19.125L15.25 16.65L16.65 15.25L19.125 17.725L17.725 19.125ZM16.65 6.75L15.25 5.35L17.725 2.875L19.125 4.275L16.65 6.75ZM4.275 19.125L2.875 17.725L5.35 15.25L6.75 16.65L4.275 19.125Z"
-                fill="#296399"
-              />
-            </svg>
-          </div>
+
+          {/* Switch Theme Button */}
+          {theme && (
+            <div
+              onClick={handleThemeSwitch}
+              className=" absolute left-[19.9rem] top-[8rem]">
+              <ThemeButton theme={theme} />
+            </div>
+          )}
+          {/* Switch Theme Button End  */}
+
           {/* Monkey no see */}
           {!weatherData && (
             <div>
@@ -233,7 +228,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
           {/* Weather Details */}
           {weatherData && (
             <div>
-              <div className=" flex-row mt-[6rem]">
+              <div className=" flex-row mt-[5rem]">
                 {/* location */}
                 <div>
                   {" "}
