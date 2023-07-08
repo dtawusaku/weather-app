@@ -58,7 +58,7 @@ export default function WeatherBox({ data }) {
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className=" ml-5">
+        className=" ml-1 px-2 py-1 md:py-1 md:px-0 md:ml-5">
         <Lottie
           animationData={data.lottie}
           style={{ width: "5rem" }}

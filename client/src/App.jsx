@@ -16,7 +16,6 @@ function App() {
   const [locationData, setlocationData] = useState(null); // Locaton data gotten from API
   const [weatherData, setweatherData] = useState(null); // wetaher data gotten from API
   const [temperature, setTemperature] = useState(null);
-
   const [theme, setTheme] = useState(localStorage.getItem("theme")); // Theme is stored in local storage.
   const themeQuery = window.matchMedia("(prefer-color-scheme:dark)"); //For theme FIXME: Why are you still here?
 
@@ -24,7 +23,6 @@ function App() {
    *  ACCESSING USER LOCATION
    *
    */
-  // :TODO: Work Here
   useEffect(() => {
     const successCallback = (position) => {
       setUserLocation({
@@ -81,16 +79,17 @@ function App() {
   // IF YOU CAN DO WITHOUT POST
   const handleSubmit = (event) => {
     event.preventDefault();
+    // console.log(event.target[0].value);
     setLocation(event.target[0].value);
   };
 
   //TODO: Add temperature degree as dependencies
   useEffect(() => {
     if (location) {
-      // fetch(`http://localhost:3000?location=${location}`) // Dev
-      fetch(
-        `https://weather-app-backend-czwq.onrender.com/api/weather?location=${location}`
-      ) //Prod
+      fetch(`http://localhost:3000?location=${location}`) // Dev
+        // fetch(
+        //   `https://weather-app-backend-czwq.onrender.com/api/weather?location=${location}`
+        // ) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);
@@ -98,32 +97,19 @@ function App() {
         });
     } else if (userLocation) {
       const { lat, lon } = userLocation;
-      // fetch(`http://localhost:3000?&lat=${lat}&lon=${lon}`) //Dev
-      fetch(
-        `https://weather-app-backend-czwq.onrender.com/api/weather?&lat=${lat}&lon=${lon}`
-      ) //Prod
+      fetch(`http://localhost:3000?&lat=${lat}&lon=${lon}`) //Dev
+        // fetch(
+        //   `https://weather-app-backend-czwq.onrender.com/api/weather?&lat=${lat}&lon=${lon}`
+        // ) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);
           setweatherData(data.weather);
         });
     }
-    // if (location) {
-    //   fetch(`http://localhost:3000?location=${location}`)
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       setlocationData(data.location);
-    //       setweatherData(data.weather);
-    //     });
-    // }
   }, [location, userLocation]);
 
-  // console.log(window);
-  // console.log(locationData);
-  // console.log(weatherData);
-
   const dateTime = new Date();
-
   const formattedDate = format(dateTime, "EEEE");
   const formattedTime = format(dateTime, "HH:mm");
 
@@ -157,7 +143,9 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
   */
 
   // console.log(emojis.eyes);
-
+  // console.log(window);
+  // console.log(locationData);
+  // console.log(weatherData);
   // console.log(userLocation);
 
   return (
@@ -165,7 +153,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
       <div className=" bg-[#BED7F3] lg:hidden container relative h-full dark:bg-mblue-dark transition-all">
         <div className=" bg-mblue dark:bg-mblue-dark mscreen transition-all">
           {/* Search input */}
-          <div className=" mt-16 mx-6">
+          <div className=" mt-8 mx-6">
             <div className="relative">
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
@@ -183,16 +171,19 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                   />
                 </svg>
               </div>
-              <input
-                type="search"
-                id="default-search"
-                class="block w-full py-2.5 pl-10 pr-5 rounded-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white "
-                placeholder="Search for a city, country or state"
-                onKeyDown={(event) => {
-                  if (event.code == "Enter") {
-                    handleSetLocation(event);
-                  }
-                }}></input>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="search"
+                  id="default-search"
+                  class="block w-full py-2.5 pl-10 pr-5 rounded-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white "
+                  placeholder="Search for a city, country or state"></input>
+                {/* <button
+                  type="submit"
+                  className=" bg-blue-500 block">
+                  {" "}
+                  Submit
+                </button> */}
+              </form>
             </div>
           </div>
           {/* Searh cinput end */}
@@ -330,10 +321,11 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
             <div className=" text-s2 text-center font-medium my-12">
               <p>No Data Available</p>
               <p className=" text-sm text-gray-400 font-light">
-                (Enter Location | grant acess to location)
+                Enter Location or grant acess to location
               </p>
             </div>
           )}
+          {/* dynamic data mobile */}
           {weatherData && (
             <Tab
               data={[
@@ -359,6 +351,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
               ]}
             />
           )}
+          {/* dynamic data mobile end */}
         </div>
         {/* Main End */}
 
@@ -542,6 +535,8 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                 </div>
               </div>
             )}
+            {/* dynamic data ends */}
+
             {/* Content End */}
           </div>
           {/* SideBar End */}

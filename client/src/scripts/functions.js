@@ -13,7 +13,7 @@ function selectLottieByDescriptionDay(description) {
       return clouds.others.rain;
       break;
     case "heavy intensity rain":
-      return clouds.day.extremedayrain;
+      return clouds.day["extreme-rain"];
       break;
     //Clouds
     case "overcast clouds":
@@ -51,7 +51,7 @@ function selectLottieByDescriptionNight(description) {
       return clouds.others.rain;
       break;
     case "heavy intensity rain":
-      return clouds.night.extremedayrain;
+      return clouds.night["extreme-rain"];
       break;
     //Clouds
     case "overcast clouds":
@@ -144,13 +144,12 @@ function weekDataLogicHandling() {
   const formattedTime = format(dateTime, "HH:mm");
 }
 
-//TODO: Complete this!
 function airPressureCheck(value) {
-  if (value < 1000) {
+  if (value > 0 && value <= 1009) {
     return "Low";
-  } else if (value > 1010) {
+  } else if (value >= 1010 && value < 1016) {
     return "Normal";
-  } else if (value > 1016) {
+  } else if (value >= 1016) {
     return "High";
   }
 }
@@ -244,8 +243,7 @@ function sliceDeterminerByHour(dt_string) {
   const dateTime = new Date(dt_string);
   const hours = dateTime.getHours();
 
-  if (hours > 0 && hours < 3) {
-  } else if (hours >= 0 && hours < 3) {
+  if (hours >= 0 && hours < 3) {
     return 7;
   } else if (hours >= 3 && hours < 6) {
     return 6;
@@ -259,6 +257,8 @@ function sliceDeterminerByHour(dt_string) {
     return 2;
   } else if (hours >= 18 && hours < 21) {
     return 1;
+  } else {
+    return 7;
   }
   // 00:00 slice 7
   // 03:00 slice 6

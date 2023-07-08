@@ -41,7 +41,7 @@ export default function Today({ data }) {
       </div>
       {/* ---- */}
       <div className=" grid grid-cols-2 space-y-4 lg:grid-cols-3 lg:gap-3 lg:space-y-2">
-        {/* Condition Box */}
+        {/* UV Index -  Condition Box */}
         <div className=" blur-[1.5px]  w-[18.3125rem] h-[10.0625rem]  md:w-[35.3125rem] md:h-[15.0625rem]  lg:blur-[2.5px] lg:w-[16.3125rem] lg:h-[14.0625rem]  lg:bg-white lg:dark:bg-white-dark border-2 border-blue07 lg:border-0 flex flex-col rounded-mb lg:rounded-xc px-6 py-5 justify-between col-span-2 lg:col-span-1 ml-7 md:ml-14 md:mb-6 lg:mb-0  lg:ml-0">
           <div className="">
             <div className="flex justify-between">
@@ -83,7 +83,7 @@ export default function Today({ data }) {
           </div>
         </div>
         {/* Condition Box end */}
-        {/* Condition Box */}
+        {/*  Wind Status - Condition Box */}
         <div
           id="rty"
           className="lg:text-left text-center w-[10.7rem]  h-[9.9rem]  md:w-[16.1rem]  md:h-[12.9rem]    lg:w-[16.3125rem] lg:h-[14.0625rem]  lg:bg-white lg:dark:bg-white-dark border-2 border-blue07 lg:border-0 flex flex-col lg:rounded-xc rounded-mb md:ml-14 lg:ml-0 lg:pl-8 lg:pr-4 lg:pt-5 lg:pb-4 justify-between pl-5  py-4">
@@ -156,7 +156,7 @@ export default function Today({ data }) {
         </div>
         {/* Condition Box end */}
 
-        {/* Condition Box */}
+        {/* Sunrise and Sunset - Condition Box */}
         <div className="  lg:text-left  w-[10.7rem]  h-[9.9rem]  md:w-[16.1rem]  md:h-[12.9rem]   lg:w-[16.3125rem] lg:h-[14.0625rem]  lg:bg-white lg:dark:bg-white-dark border-2 border-blue07 lg:border-0 flex flex-col  rounded-mb lg:rounded-xc lg:pl-8 lg:pr-4 lg:pt-5 lg:pb-4 justify-between pl-5  py-4">
           <div className="">
             <div className="flex justify-between">
@@ -231,7 +231,7 @@ export default function Today({ data }) {
         </div>
         {/* Condition Box end */}
 
-        {/* Condition Box */}
+        {/* Humididty - Condition Box */}
         <div className=" lg:text-left text-center w-[10.7rem]  h-[9.9rem]  md:w-[16.1rem]  md:h-[12.9rem]   lg:w-[16.3125rem] lg:h-[14.0625rem]  flex flex-col  rounded-mb lg:rounded-xc md:ml-14 lg:ml-0 lg:pl-8 lg:pr-4 lg:pt-5 lg:pb-4 justify-between pl-5 py-4 lg:bg-white lg:dark:bg-white-dark border-2 border-blue07 lg:border-0">
           <div className="">
             <div className="flex justify-between">
@@ -289,7 +289,7 @@ export default function Today({ data }) {
           </div>
         </div>
         {/* Condition Box end */}
-        {/* Condition Box */}
+        {/* Visibility - Condition Box */}
         <div className=" lg:text-left text-center  w-[10.7rem]  h-[9.9rem]  md:w-[16.1rem]  md:h-[12.9rem]   lg:w-[16.3125rem] lg:h-[14.0625rem] lg:bg-white lg:dark:bg-white-dark border-2 border-blue07 lg:border-0 flex flex-col  rounded-mb lg:rounded-xc lg:pl-8 lg:pr-4 lg:pt-5 lg:pb-4 justify-between pl-5  py-4">
           <div className="">
             <div className="flex justify-between">
@@ -347,7 +347,7 @@ export default function Today({ data }) {
           </div>
         </div>
         {/* Condition Box end */}
-        {/* Condition Box */}
+        {/* Air Pressure - Condition Box */}
         <div className="lg:text-left text-center   w-[10.7rem]  h-[9.9rem]  md:w-[16.1rem]  md:h-[12.9rem]  lg:w-[16.3125rem] lg:h-[14.0625rem]  lg:bg-white lg:dark:bg-white-dark border-2 border-blue07 lg:border-0 flex flex-col  rounded-mb lg:rounded-xc md:ml-14 lg:ml-0 lg:pl-8 lg:pr-4 lg:pt-5 lg:pb-4 justify-between pl-5  py-4 col-span-2 lg:col-span-1">
           <div className="">
             <div className="flex justify-between">
