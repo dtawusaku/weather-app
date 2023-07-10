@@ -192,13 +192,13 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
           {/* Searh cinput end */}
 
           {/* Switch Theme Button */}
-          {theme && (
-            <div
-              onClick={handleThemeSwitch}
-              className=" absolute left-[19.9rem] top-[8rem] md:left-[41rem] md:top-[8rem]">
-              <ThemeButton theme={theme} />
-            </div>
-          )}
+
+          <div
+            onClick={handleThemeSwitch}
+            className=" absolute left-[19.9rem] top-[8rem] md:left-[41rem] md:top-[8rem]">
+            <ThemeButton theme={theme} />
+          </div>
+
           {/* Switch Theme Button End  */}
 
           {!weatherData && (
@@ -226,7 +226,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
           {/* Weather Details */}
           {weatherData && (
             <div>
-              <div className=" flex-row mt-[5rem]">
+              <div className=" flex-row mt-[5rem] md:mt-[1rem]">
                 {/* location */}
                 <div>
                   {" "}
