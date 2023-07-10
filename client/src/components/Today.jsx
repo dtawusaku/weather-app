@@ -23,7 +23,8 @@ export default function Today({ data }) {
       initial={{ x: -50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.2 }}
-      exit={{ x: 300, opacity: 0 }}>
+      exit={{ x: 300, opacity: 0 }}
+      className=" pb-4">
       {/* :TODO: ADD SLIDER  FOR TABLETS AND SMALLERS SCREENS*/}
       <div className="mt-7 mb-10 md:my-14 lg:my-[4.125rem] flex gap-4 w-full overflow-y-hidden">
         {data.main.map((data) => (
@@ -157,7 +158,7 @@ export default function Today({ data }) {
         {/* Condition Box end */}
 
         {/* Sunrise and Sunset - Condition Box */}
-        <div className="  lg:text-left  w-[10.7rem]  h-[9.9rem]  md:w-[16.1rem]  md:h-[12.9rem]   lg:w-[16.3125rem] lg:h-[14.0625rem]  lg:bg-white lg:dark:bg-white-dark border-2 border-blue07 lg:border-0 flex flex-col  rounded-mb lg:rounded-xc lg:pl-8 lg:pr-4 lg:pt-5 lg:pb-4 justify-between pl-5  py-4">
+        <div className=" lg:text-left  w-[10.7rem]  h-[9.9rem]  md:w-[16.1rem]  md:h-[12.9rem]   lg:w-[16.3125rem] lg:h-[14.0625rem]  lg:bg-white lg:dark:bg-white-dark border-2 border-blue07 lg:border-0 flex flex-col  rounded-mb lg:rounded-xc lg:pl-8 lg:pr-4 lg:pt-5 lg:pb-4 justify-between pl-5  py-4">
           <div className="">
             <div className="flex justify-between">
               <h1 className=" font-normal lg:font-meduim text-black08 lg:text-my-gray lg:dark:text-my-gray-dark text-sm md:text-s1 lg:text-s2 dark:font-semibold">
@@ -182,10 +183,10 @@ export default function Today({ data }) {
               </div>
             </div>
           </div>
-          <div className=" flex flex-col space-y-3 lg:space-y-0">
+          <div className=" flex flex-col space-y-3 lg:space-y-5 lg:pb-4">
             <div className="flex">
               {" "}
-              <div className=" hidden lg:block">
+              <div className=" hidden lg:block -mt-4">
                 {" "}
                 <Lottie
                   animationData={clouds.others.sunrise}
@@ -207,7 +208,7 @@ export default function Today({ data }) {
             </div>
             <div className=" flex">
               {" "}
-              <div className=" hidden lg:block">
+              <div className=" hidden lg:block -mt-4">
                 {" "}
                 <Lottie
                   animationData={clouds.others.sunrise}

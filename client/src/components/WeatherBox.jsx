@@ -27,27 +27,12 @@ export default function WeatherBox({ data }) {
     //   console.log(event.target.classList);
     // }
   };
-  useEffect(() => {}, []);
-  // useEffect(() => {
-  //   const handleClick = (event) => {
-  //     if (event.target.classList.contains("weather-box")) {
-  //       console.log("You clicked a card");
-  //     }
-  //   };
-
-  //   const weatherContainer = document.querySelector(".weather-container");
-  //   weatherContainer.addEventListener("click", handleClick);
-
-  //   return () => {
-  //     weatherContainer.removeEventListener("click", handleClick);
-  //   };
-  // }, []);
 
   // console.log(data);
 
   return (
     <motion.div
-      className=" lg:dark:bg-white-dark weather-box  flex flex-col text-center rounded-mb lg:rounded-xc justify-between py-3 dark:bg-mb-white border-2 border-blue07 lg:border-white lg:dark:border-white-dark"
+      className=" lg:dark:bg-white-dark weather-box bg-white  flex flex-col text-center rounded-mb lg:rounded-xc justify-between py-3 dark:bg-mb-white border-2 border-blue07 lg:border-white lg:dark:border-white-dark"
       // whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={clicked}>
@@ -71,7 +56,7 @@ export default function WeatherBox({ data }) {
       </div>
       {/* :TODO: CHANGE BACKGROUND COLOR */}
       {showPill && (
-        <div className=" bg-white-dark rounded-md px-1.5 py-0.5 absolute top-1/2 left-0 text-xs  transition ease-in-out">
+        <div className=" bg-mb-white text-black dark:text-white  dark:bg-white-dark rounded-md px-1.5 py-0.5 absolute top-1/2 left-0 text-xs  transition ease-in-out">
           {" "}
           {data.description}
         </div>

@@ -21,7 +21,8 @@ export default function TypeWriterContainer({ location }) {
           }`,
           autoStart: true,
           loop: false,
-          //   delay: 1175,
+          cursor: null,
+          // delay: 115,
         }}
       />
     </div>

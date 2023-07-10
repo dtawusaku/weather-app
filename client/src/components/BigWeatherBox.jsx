@@ -130,6 +130,7 @@ export default function BigWeatherBox({ weather }) {
             <h1 className=" text-blue05 text-s1 font-medium text-center">
               {" "}
               {weather.vsibility ? weather.vsibility : "80"}
+              <span className=" text-sm">%</span>
             </h1>
           </div>
         </div>

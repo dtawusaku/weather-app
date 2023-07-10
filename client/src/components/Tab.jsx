@@ -13,7 +13,8 @@ export default function Tab({ data }) {
 
   return (
     //TODO: Apply animation on this so that when weather data is present, it animates in with either a chnage in opacity of direction.
-    <motion.div className="tab">
+    //Done.
+    <motion.div className="tab lg:overflow-x-hidden">
       <div className="h-[3.6875rem] flex justify-between md:justify-around lg:justify-between lg:pt-6 lg:pr-4">
         <div className="tab-headers flex justify-between space-x-40 lg:space-x-4 md:space-x-96">
           {/* Dynamic */}
