@@ -204,6 +204,7 @@ export default function Today({ data }) {
                 {data.sunrise
                   ? functions.formatTime(data.sunrise, 3600)
                   : "00:00PM"}
+                &nbsp;AM
               </h1>
             </div>
             <div className=" flex">
@@ -226,6 +227,7 @@ export default function Today({ data }) {
                 {data.sunset
                   ? functions.formatTime(data.sunset, 3600)
                   : "00:00PM"}
+                &nbsp;PM
               </h1>
             </div>
           </div>

@@ -89,10 +89,10 @@ function App() {
   //TODO: Add temperature degree as dependencies
   useEffect(() => {
     if (location) {
-      fetch(`http://localhost:3000?location=${location}`) // Dev
-        // fetch(
-        //   `https://weather-app-backend-czwq.onrender.com/api/weather?location=${location}`
-        // ) //Prod
+      // fetch(`http://localhost:3000?location=${location}`) // Dev
+      fetch(
+        `https://weather-app-backend-czwq.onrender.com/api/weather?location=${location}`
+      ) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);
@@ -100,10 +100,10 @@ function App() {
         });
     } else if (userLocation) {
       const { lat, lon } = userLocation;
-      fetch(`http://localhost:3000?&lat=${lat}&lon=${lon}`) //Dev
-        // fetch(
-        //   `https://weather-app-backend-czwq.onrender.com/api/weather?&lat=${lat}&lon=${lon}`
-        // ) //Prod
+      // fetch(`http://localhost:3000?&lat=${lat}&lon=${lon}`) //Dev
+      fetch(
+        `https://weather-app-backend-czwq.onrender.com/api/weather?&lat=${lat}&lon=${lon}`
+      ) //Prod
         .then((response) => response.json())
         .then((data) => {
           setlocationData(data.location);
@@ -341,7 +341,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                         main: weatherData.list.slice(
                           0,
                           functions.sliceDeterminerByHour(
-                            weatherData.list[0].dt_txt
+                            weatherData.list[0].dt_txt - 1
                           )
                         ),
                         sunrise: weatherData.city.sunrise,
@@ -353,7 +353,15 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                 },
                 {
                   name: "Week",
-                  component: <Week data={weatherData.list.slice(7)} />,
+                  component: (
+                    <Week
+                      data={weatherData.list.slice(
+                        functions.sliceDeterminerByHour(
+                          weatherData.list[0].dt_txt - 1
+                        )
+                      )}
+                    />
+                  ),
                 },
               ]}
             />
@@ -566,7 +574,7 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                   <div className="h-[7.6875rem] w-[19.8rem]">
                     <img
                       src="https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGlzb21ldHJpYyUyMGFic3RyYWN0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                      className="w-full h-full object-cover  rounded-[1.5rem] opacity-75"></img>
+                      className="w-full h-full object-cover  rounded-[1rem] opacity-75"></img>
                     <h1 className=" font-semibold text-lg text-white text-center -translate-y-[4.3rem]">
                       {weatherData && (
                         <TypeWriterContainer location={locationData} />
@@ -629,7 +637,18 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
                     />
                   ),
                 },
-                { name: "Week", component: <Week /> },
+                {
+                  name: "Week",
+                  component: (
+                    <Week
+                      data={weatherData.list.slice(
+                        functions.sliceDeterminerByHour(
+                          weatherData.list[0].dt_txt - 1
+                        )
+                      )}
+                    />
+                  ),
+                },
               ]}
             />
           )}

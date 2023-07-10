@@ -54,7 +54,6 @@ export default function WeatherBox({ data }) {
         {data.temp}&deg;
         <sup>c</sup>
       </div>
-      {/* :TODO: CHANGE BACKGROUND COLOR */}
       {showPill && (
         <div className=" bg-mb-white text-black dark:text-white  dark:bg-white-dark rounded-md px-1.5 py-0.5 absolute top-1/2 left-0 text-xs  transition ease-in-out">
           {" "}

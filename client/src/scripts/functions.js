@@ -96,6 +96,7 @@ function todayDataLogicHandling(weatherobject) {
   const dateTime = new Date(dateTimeString);
   const hours = dateTime.getHours(); ///Get hours value
   const formattedTime = format(dateTime, "HH:mm"); // Time - 16:34
+  const weekDay = format(dateTime, "EEEE"); // Sun
   const weekDayShort = format(dateTime, "EEE"); // Sun
 
   //Handle Lottie Data by description
@@ -117,6 +118,7 @@ function todayDataLogicHandling(weatherobject) {
   }
 
   const data = {
+    longday: weekDay,
     day: weekDayShort,
     time: formattedTime,
     description: description,
@@ -278,20 +280,12 @@ function formatTime(date, offsetSeconds) {
     minute: "numeric",
     hour12: true,
     hourCycle: "h23",
-    timeZone: "UTC",
-    // timeZone: `UTC${utcOffsetHours >= 0 ? "+" : "-"}${Math.abs(utcOffsetHours)
-    //   .toString()
-    //   .padStart(2, "0")}:${Math.abs((offsetSeconds % 3600) / 60)
-    //   .toString()
-    //   .padStart(2, "0")}`,
+    timeZone: "America/Denver",
   }).format(date);
 
   const [time, period] = formattedDate.split(" ");
   const [hour, minute] = time.split(":");
-  const formattedTime = `${hour.padStart(
-    2,
-    "0"
-  )}:${minute}${period.toUpperCase()}`;
+  const formattedTime = `${hour.padStart(2, "0")}:${minute}`;
 
   return formattedTime;
 }

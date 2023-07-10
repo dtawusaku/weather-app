@@ -4,7 +4,7 @@ import Typewriter from "typewriter-effect";
 export default function TypeWriterContainer({ location }) {
   // console.log(location);
   return (
-    <div className=" container overflow-hidden px-4">
+    <div className=" container overflow-hidden px-4 text-ellipsis ">
       {" "}
       <Typewriter
         options={{
