@@ -197,7 +197,7 @@ function App() {
           {/* Weather Details */}
           {weatherData && (
             <div>
-              <div className=" flex-row mt-[5rem]">
+              <div className=" flex-row mt-[5rem] md:mt-[1rem]">
                 {/* location */}
                 <div>
                   {" "}

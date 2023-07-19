@@ -4,6 +4,12 @@ WeatherApp is a user-friendly weather forecast application developed using React
 
 ## Features
 
+# Weather App
+
+WeatherApp is a user-friendly weather forecast application developed using React.js and powered by the OpenWeatherMapAPI. Users can access accurate and up-to-date weather data for their current location or any other location of interest.
+
+## Features
+
 - Real-time weather data for the current day with conditions including Temperature, humidity, wind status, and air pressure.
 - Weekly forecast with temperature trends and expected weather conditions.
 - Custom location search to retrieve weather data for any location worldwide.

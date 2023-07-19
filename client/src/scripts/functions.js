@@ -8,6 +8,12 @@ import emojis from "./emojis";
  * @param {string} desc Description of weather.
  * @returns {path} Lottie file path
  */
+/**
+ * Gets day weather icon
+ *
+ * @param {string} desc Description of weather.
+ * @returns {path} Lottie file path
+ */
 function selectLottieByDescriptionDay(description) {
   switch (description) {
     //Rain
@@ -46,6 +52,13 @@ function selectLottieByDescriptionDay(description) {
       break;
   }
 }
+
+/**
+ * Gets night weather icon
+ *
+ * @param {string} desc Description of weather.
+ * @returns {path} Lottie file path
+ */
 
 /**
  * Gets night weather icon
@@ -92,6 +105,12 @@ function selectLottieByDescriptionNight(description) {
   }
 }
 
+/**
+ * Handles data extraction, formating and arrangement.
+ *
+ * @param {weatherobject} weatherobj The weather data object.
+ * @returns {object} A well structured object
+ */
 /**
  * Handles data extraction, formating and arrangement.
  *
@@ -158,6 +177,12 @@ function todayDataLogicHandling(weatherobject) {
  * @param {number} value air pressure
  * @returns {string} Comment
  */
+/**
+ * Checks current air pressure and gives a desciptive comment.
+ *
+ * @param {number} value air pressure
+ * @returns {string} Comment
+ */
 function airPressureCheck(value) {
   if (value > 0 && value <= 1009) {
     return "Low";
@@ -167,6 +192,13 @@ function airPressureCheck(value) {
     return "High";
   }
 }
+
+/**
+ * Gets air pressure icon.
+ *
+ * @param {string} a comment
+ * @returns {file} file path
+ */
 
 /**
  * Gets air pressure icon.
@@ -196,6 +228,12 @@ function airpressurelottie(airPressureComment) {
  * @param {number} value humidity
  * @returns {string} Comment
  */
+/**
+ * Checks current humidity and gives a desciptive comment.
+ *
+ * @param {number} value humidity
+ * @returns {string} Comment
+ */
 function humidityCheck(value) {
   if (value < 30) {
     return "Dry";
@@ -205,6 +243,13 @@ function humidityCheck(value) {
     return "Muggy";
   }
 }
+
+/**
+ * Gets humidity icon.
+ *
+ * @param {string} a comment
+ * @returns {file} file path
+ */
 
 /**
  * Gets humidity icon.
@@ -235,11 +280,23 @@ function humiditylottie(humiditycomment) {
  * @param {number} meters Distance in meters
  * @returns {float} Kilometers
  */
+/**
+ * Converts meters to kilometers
+ *
+ * @param {number} meters Distance in meters
+ * @returns {float} Kilometers
+ */
 function metersToKilometers(meters) {
   const km = meters / 1000;
   return km.toFixed(1); // returns in one decimal place.
 }
 
+/**
+ * Checks current visibility and gives a desciptive comment.
+ *
+ * @param {number} a Visibility
+ * @returns {string} Comment
+ */
 /**
  * Checks current visibility and gives a desciptive comment.
  *
@@ -261,6 +318,13 @@ function visibilityCheck(value) {
     return "Excellent";
   }
 }
+
+/**
+ * Gets visbility icon.
+ *
+ * @param {string} a comment
+ * @returns {file} file path
+ */
 
 /**
  * Gets visbility icon.
