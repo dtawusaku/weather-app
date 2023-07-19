@@ -1,10 +1,30 @@
+:root {
+  --device-height: ;
+}
+
+.mscreen {
+  height: calc(var(--device-height) / 1.25);
+}
+
 .weather-box {
   height: 9.8125rem;
   width: 7.625rem; /* 122px */
-  position: sticky;
-  border-radius: 0.8rem;
-  background-color: white;
+  position: relative;
+  /* background-color: white;
+  transform-style: preserve-3d;
+  transition: transform 1s; */
 }
+/* .weather-box:hover {
+  transform: rotateY(180deg);
+} */
+
+/* .flip {
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+.flip:hover {
+  transform: rotateY(180deg);
+} */
 
 .weather-box1 {
   position: absolute;
