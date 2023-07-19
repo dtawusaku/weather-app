@@ -1,41 +1,52 @@
-<img src="/assets/weatherlogo.png" width="400px" style="align-center">
+# Weather App
 
-<br>
-## Weather App
-A weather application built with Reactjs that retrieves weather data using the OpenWeatherMap API.
-It leverages the OpenWeatherMap API to retrieve current weather data for different locations.
+WeatherApp is a user-friendly weather forecast application developed using React.js and powered by the OpenWeatherMapAPI. Users can access accurate and up-to-date weather data for their current location or any other location of interest.
+
+## Features
+
+- Real-time weather data for the current day with conditions including Temperature, humidity, wind status, and air pressure.
+- Weekly forecast with temperature trends and expected weather conditions.
+- Custom location search to retrieve weather data for any location worldwide.
+- Responsive design for seamless access from any device.
 
 ## Screens
 
-### Version 1
-
-<b>Landing Page</b>
-<img src="/assets/images/landingv1.png">
-
-<b>Result Page</b>
-<img src="/assets/images/getv1.png">
-
-<!-- <bHow it works</b>
-[![Weather Application Preview](https://example.com/path/to/placeholder-image.png)](https://example.com/path/to/your/video.mp4) -->
-
-<iframe width="560" height="315" src="https://github.com/dtawusaku/weather-app/blob/testing/assets/video.mp4" frameborder="0" allowfullscreen></iframe>
-
-### Version 2
-
----
+<table style="border-collapse: separate; border-spacing: 20px; border:none;">
+    <tr>
+        <th style="border: none; text-align: center;" colspan="2">
+            <h2>Result Page - Light mode</h2>
+        </th>
+    </tr>
+    <tr>
+    <td style="border: none; text-align: center;">
+      <img src="/assets/images/mobile-light.png" alt="Mobile light mode">
+    </td>
+    <td style="border: none; text-align: center;">
+      <img src="/assets/images/desktop-light.png" alt="Desktop Light mode">
+    </td>
+  </tr>
+  <tr>
+        <th style="border: none; text-align: center;" colspan="2">
+            <h2>Result Page - Dark mode</h2>
+        </th>
+    </tr>
+   <tr>
+    <td style="border: none;">
+      <img src="/assets/images/mobile-dark.png" alt="Mobile dark mode">
+    </td>
+    <td style="border: none; ">
+      <img src="/assets/images/desktop-dark.png" alt="Desktop dark mode">
+    </td>
+  </tr>
+</table>
 
 ## Acknowledgments
 
-<ul>
-    <li>This application is my version which was originally made in Angela Yu's
-    <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/">Web development BootCamp Course</a></li>
-    <li>This application was built using the OpenWeather API.</li>
-</ul>
-
-Package X was gotten from ---- https://googlefonts.github.io/noto-emoji-animation/
-Package Y was gotten from --- https://github.com/basmilius/weather-icons
-Official site - https://meteocons.com/
+- This application is my custom implementation, inspired by the concepts learned during [Angela Yu's Web Development BootCamp Course](file_path)
+- The weather data for this application is sourced from the [OpeweatherMapAPI]()
+- Special thanks to [Basmilius](https://github.com/basmilius/weather-icons) for his incredible work in creating the animated weather icons used in this project. You can find more of his icons [here](https://meteocons.com/).
+- The animated emojis used in this application were obtained from [here.](https://googlefonts.github.io/noto-emoji-animation/)
 
 ## License
 
-This project is licensed under the [Licence Name](file_path) - see the LICENSE file for details.
+This project is licensed under the - see the LICENSE file for details.
