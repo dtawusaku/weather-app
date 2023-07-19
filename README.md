@@ -1,7 +1,13 @@
 # Weather App
 
-A weather application built with Reactjs that retrieves weather data using the OpenWeatherMap API.
-It leverages the OpenWeatherMap API to retrieve current weather data for different locations.
+WeatherApp is a user-friendly weather forecast application developed using React.js and powered by the OpenWeatherMapAPI. Users can access accurate and up-to-date weather data for their current location or any other location of interest.
+
+## Features
+
+- Real-time weather data for the current day with conditions including Temperature, humidity, wind status, and air pressure.
+- Weekly forecast with temperature trends and expected weather conditions.
+- Custom location search to retrieve weather data for any location worldwide.
+- Responsive design for seamless access from any device.
 
 ## Screens
 
@@ -15,7 +21,7 @@ It leverages the OpenWeatherMap API to retrieve current weather data for differe
       <img src="/assets/images/desktop-light.png" alt="Desktop Light mode">
     </td>
   </tr>
-  <th style="border: none; text-align: center;">result Page - Dark Mode</th>
+  <th style="border: none; text-align: center;">Result Page - Dark Mode</th>
    <tr>
     <td style="border: none;">
       <img src="/assets/images/mobile-dark.png" alt="Mobile dark mode">
@@ -26,28 +32,12 @@ It leverages the OpenWeatherMap API to retrieve current weather data for differe
   </tr>
 </table>
 
-#### Result Page - Light mode
-
-<img src="">
-
-<br>
-
-#### Result Page - Dark mode
-
-<img src="/assets/images/desktop-dark.png">
-
-<iframe width="560" height="315" src="https://github.com/dtawusaku/weather-app/blob/testing/assets/video.mp4" frameborder="0" allowfullscreen></iframe>
-
 ## Acknowledgments
 
 - This application is my custom implementation, inspired by the concepts learned during [Angela Yu's Web Development BootCamp Course](file_path)
-- The weather data for this application is sourced from the [OpeweatherAPI]()
-- Special thanks to [Basmilius]() for his incredible work in creating the animated weather icons used in this project. You can find more of his icons [here](https://meteocons.com/).
+- The weather data for this application is sourced from the [OpeweatherMapAPI]()
+- Special thanks to [Basmilius](https://github.com/basmilius/weather-icons) for his incredible work in creating the animated weather icons used in this project. You can find more of his icons [here](https://meteocons.com/).
 - The animated emojis used in this application were obtained from [here.](https://googlefonts.github.io/noto-emoji-animation/)
-
-Package X was gotten from ----
-Package Y was gotten from --- https://github.com/basmilius/weather-icons
-Official site -
 
 ## License
 
