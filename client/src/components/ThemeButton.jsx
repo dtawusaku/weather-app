@@ -17,7 +17,7 @@ export default function ThemeButton({ theme }) {
     <motion.div
       whileTap={{ scale: 0.9 }}
       className=" inline-block border-2 border-blue07 dark:border-mb-white rounded-full p-0.5">
-      <div>
+      <div className=" w-full h-full">
         {" "}
         <Lottie
           animationData={Theme()}

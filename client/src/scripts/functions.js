@@ -2,7 +2,12 @@ import { format } from "date-fns"; //Date Formatting
 import clouds from "./clouds";
 import emojis from "./emojis";
 
-//Remember For Day and night.
+/**
+ * Gets day weather icon
+ *
+ * @param {string} desc Description of weather.
+ * @returns {path} Lottie file path
+ */
 function selectLottieByDescriptionDay(description) {
   switch (description) {
     //Rain
@@ -41,6 +46,13 @@ function selectLottieByDescriptionDay(description) {
       break;
   }
 }
+
+/**
+ * Gets night weather icon
+ *
+ * @param {string} desc Description of weather.
+ * @returns {path} Lottie file path
+ */
 function selectLottieByDescriptionNight(description) {
   switch (description) {
     //Rain
@@ -80,6 +92,12 @@ function selectLottieByDescriptionNight(description) {
   }
 }
 
+/**
+ * Handles data extraction, formating and arrangement.
+ *
+ * @param {weatherobject} weatherobj The weather data object.
+ * @returns {object} A well structured object
+ */
 function todayDataLogicHandling(weatherobject) {
   //Values
   const dateTimeString = weatherobject.dt_txt;
@@ -134,18 +152,12 @@ function todayDataLogicHandling(weatherobject) {
   return data;
 }
 
-function todayhightlightslogic(obj) {
-  // Convert timestamps to milliseconds
-  const sunriseTime = new Date(weatherobject.city.sunrise * 1000);
-  const sunsetTime = new Date(weatherobject.city.sunset * 1000);
-
-  //Get time strings
-  const sunrise = sunriseTime.toLocaleTimeString();
-  const sunset = sunsetTime.toLocaleTimeString();
-}
-
-function weekDataLogicHandling(weatherobject) {}
-
+/**
+ * Checks current air pressure and gives a desciptive comment.
+ *
+ * @param {number} value air pressure
+ * @returns {string} Comment
+ */
 function airPressureCheck(value) {
   if (value > 0 && value <= 1009) {
     return "Low";
@@ -155,6 +167,13 @@ function airPressureCheck(value) {
     return "High";
   }
 }
+
+/**
+ * Gets air pressure icon.
+ *
+ * @param {string} a comment
+ * @returns {file} file path
+ */
 function airpressurelottie(airPressureComment) {
   switch (airPressureComment) {
     case "Low":
@@ -171,7 +190,12 @@ function airpressurelottie(airPressureComment) {
       break;
   }
 }
-
+/**
+ * Checks current humidity and gives a desciptive comment.
+ *
+ * @param {number} value humidity
+ * @returns {string} Comment
+ */
 function humidityCheck(value) {
   if (value < 30) {
     return "Dry";
@@ -181,6 +205,13 @@ function humidityCheck(value) {
     return "Muggy";
   }
 }
+
+/**
+ * Gets humidity icon.
+ *
+ * @param {string} a comment
+ * @returns {file} file path
+ */
 function humiditylottie(humiditycomment) {
   switch (humiditycomment) {
     case "Dry":
@@ -198,11 +229,23 @@ function humiditylottie(humiditycomment) {
   }
 }
 
+/**
+ * Converts meters to kilometers
+ *
+ * @param {number} meters Distance in meters
+ * @returns {float} Kilometers
+ */
 function metersToKilometers(meters) {
   const km = meters / 1000;
   return km.toFixed(1); // returns in one decimal place.
 }
 
+/**
+ * Checks current visibility and gives a desciptive comment.
+ *
+ * @param {number} a Visibility
+ * @returns {string} Comment
+ */
 function visibilityCheck(value) {
   const km = parseFloat(metersToKilometers(value));
   // console.log(km);
@@ -218,6 +261,13 @@ function visibilityCheck(value) {
     return "Excellent";
   }
 }
+
+/**
+ * Gets visbility icon.
+ *
+ * @param {string} a comment
+ * @returns {file} file path
+ */
 function visibilitylottie(comment) {
   switch (comment) {
     case "Oh my":
@@ -272,7 +322,12 @@ function sliceDeterminerByHour(dt_string) {
   // 18:00 sllice 1
   // 21:00 slice 0
 }
-//FIXME: Showing time based on the current user timezone.
+/**
+ * Convert time based on user timezone.
+ *
+ * @param {date} ba comment
+ * @returns {file} file path
+ */
 function formatTime(date, offsetSeconds) {
   const utcOffsetHours = offsetSeconds / 3600; // Convert seconds to hours
   const formattedDate = new Intl.DateTimeFormat("en-US", {
