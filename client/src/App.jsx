@@ -116,35 +116,6 @@ function App() {
   const formattedDate = format(dateTime, "EEEE, HH:mm"); // Saturday, 16:23
   const formattedTime = format(dateTime, "HH:mm");
 
-  /*
-  const formattedDate = format(dateTime, "MMMM dd, yyyy"); //June 14, 2023
-  const formattedTime = format(dateTime, "HH:mm:ss"); //00:00:00
-  */
-
-  /* 
-  WEATHER DATA GROUPING KINI
-
-  fullcityname = weatherData.city.name + ", " + weatherData.city.country
-
-  today = weatherData.list.slice(0,7);
-  week =  today = weatherData.list.slice(8,39);
-  
-  ------------------------------------
-const date = new Date(); // Assuming you have a Date object
-
-const options = {
-  weekday: 'short' // Specify 'short' for abbreviated day of the week
-};
-
-const formattedDay = date.toLocaleString('en-US', options);
-
-console.log(formattedDay); // Output: Mon (if today is Monday)
----------------------------------------
-
-
-
-  */
-
   // console.log(emojis.eyes);
   // console.log(window);
   // console.log(locationData);
@@ -192,13 +163,13 @@ console.log(formattedDay); // Output: Mon (if today is Monday)
           {/* Searh cinput end */}
 
           {/* Switch Theme Button */}
-          {theme && (
-            <div
-              onClick={handleThemeSwitch}
-              className=" absolute left-[19.9rem] top-[8rem] md:left-[41rem] md:top-[8rem]">
-              <ThemeButton theme={theme} />
-            </div>
-          )}
+
+          <div
+            onClick={handleThemeSwitch}
+            className=" absolute left-[19.9rem] top-[8rem] md:left-[41rem] md:top-[8rem]">
+            <ThemeButton theme={theme} />
+          </div>
+
           {/* Switch Theme Button End  */}
 
           {!weatherData && (
