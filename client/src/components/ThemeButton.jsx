@@ -9,7 +9,7 @@ export default function ThemeButton({ theme }) {
 
   // Function to toggle the theme
   const toggleTheme = () => {
-    setstoreTheme(storeTheme === "dark" ? "light" : "dark");
+    setstoreTheme(storeTheme === "dark" ? "dark" : "light");
   };
 
   // Theme();

@@ -373,7 +373,7 @@ function sliceDeterminerByHour(dt_string) {
   } else if (hours >= 15 && hours < 18) {
     return 2;
   } else if (hours >= 18 && hours < 21) {
-    return 1;
+    return 2;
   } else {
     return 7;
   }
