@@ -597,9 +597,7 @@ function App() {
                       data={{
                         main: weatherData.list.slice(
                           0,
-                          functions.sliceDeterminerByHour(
-                            weatherData.list[0].dt_txt
-                          )
+                          functions.sliceDeterminerByHour("2023-07-21 22:00:00")
                         ),
                         sunrise: weatherData.city.sunrise,
                         sunset: weatherData.city.sunset,
@@ -614,7 +612,7 @@ function App() {
                     <Week
                       data={weatherData.list.slice(
                         functions.sliceDeterminerByHour(
-                          weatherData.list[0].dt_txt - 1
+                          weatherData.list[0].dt_txt
                         )
                       )}
                     />
